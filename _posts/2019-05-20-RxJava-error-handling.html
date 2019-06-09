@@ -1,0 +1,59 @@
+---
+layout: post
+title: RxJava2 error handling
+categories: [RxJava, Examples, Reactive]
+tags: [RxJava, Examples, Reactive]
+background: '/img/posts/rxjava.jpeg'
+comments: true
+---
+
+<p> One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error. </p>
+
+<p>
+Such errors are routed to the RxJavaPlugins.onError handler. This handler can be overridden with the method RxJavaPlugins.setErrorHandler(Consumer<Throwable>). Without a specific handler, RxJava defaults to printing the Throwable's stacktrace to the console and calls the current thread's uncaught exception handler. </p>
+
+<h6> Observable timeout example without error handling </h6>
+
+{% highlight java %}
+    public static void main(String[] args) throws Exception {
+        Observable.create(observableEmitter -> {
+            observableEmitter.onNext(testObservable());
+        }).timeout(1L, TimeUnit.SECONDS).doOnError(error -> {
+            System.out.println("Failure occurred with observable :  "+error);
+        }).subscribeOn(Schedulers.newThread()).subscribe(System.out::println);
+        Thread.sleep(2000);
+    }
+
+    private static String testObservable() throws Exception {
+        System.out.println(Thread.currentThread().getName());
+        Thread.sleep(4000);
+        return "Test";
+    }
+{% endhighlight %}
+
+<strong>output : </strong>
+{% highlight java %}
+
+RxNewThreadScheduler-1
+Failure occurred with observable :  java.util.concurrent.TimeoutException: The source did not signal an event for 1 seconds and has been terminated.
+io.reactivex.exceptions.OnErrorNotImplementedException: The exception was not handled due to missing onError handler in the subscribe() method call. Further reading: https://github.com/ReactiveX/RxJava/wiki/Error-Handling | java.util.concurrent.TimeoutException: The source did not signal an event for 1 seconds and has been terminated.
+  at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:704)
+  at io.reactivex.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:701)
+
+{% endhighlight %}
+
+<h6> Observable timeout example with error handler </h6>
+
+
+{% highlight java %}
+RxJavaPlugins.setErrorHandler(e -> {
+    System.out.println("Exception handler : " + e.getCause());
+            //you can have your exception handling implementation here.
+});
+
+Observable.create(observableEmitter -> {
+    observableEmitter.onNext(testObservable());
+    }).timeout(1L, TimeUnit.SECONDS).doOnError(error -> {
+    System.out.println("Failure occurred with observable :  " + error);
+}).subscribeOn(Schedulers.newThread()).subscribe(System.out::println);
+{% endhighlight %}

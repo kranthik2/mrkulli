@@ -1,0 +1,79 @@
+---
+layout: post
+title: Reactive programming with RxJava
+categories: [RxJava, Java, Reactive]
+tags: [RxJava, Java, Reactive]
+background: '/img/posts/rxjava.jpeg'
+---
+
+<p>Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.</p>
+
+<p>
+RxJava is a Reactive Programming library for composing asynchronous and event-based programs by using observable sequences, coupled with some other features like functional programming, and easy concurrency makes RxJava a useful library. 
+RxJava is an alternative to the more limited ways of doing asynchronous code in the JDK, in order to be more efficient with resources and increase an application's capacity to serve large number of clients, without the headache of writing low-level concurrent or and parallelized code
+</p>
+
+<h4 > Observable </h4>
+
+<p>
+An observer subscribes to an Observable then that observer reacts to whatever item or sequence of items the Observable emits. This pattern facilitates concurrent operations because it does not need to block while waiting for the Observable to emit objects, but instead it creates a sentry in the form of an observer that stands ready to react appropriately at whatever future time the Observable does so.</p>
+
+
+{% highlight java %}
+Observable.create(observableEmitter -> {
+      observableEmitter.onNext("Observable test");
+      }).subscribe(System.out::println);
+{% endhighlight %}
+
+<p>
+
+Observable is intended for push (reactive) but can also be used for pull (interactive). It is lazy rather than eager. It can be used asynchronously or synchronously. It can represent 0, 1, many, or infinite values or events over time.
+
+</p>
+<p>
+You can introduce multithreading into observable operators by instructing operators to operate on particular Schedulers.
+</p>
+
+{% highlight java %}
+Observable.create(observableEmitter -> {
+      System.out.println(Thread.currentThread().getName());
+      observableEmitter.onNext("Observable test");
+      }).subscribeOn(Schedulers.newThread()).subscribe(System.out::println);
+{% endhighlight %}
+
+<blockquote class="blockquote">
+output :
+  RxNewThreadScheduler-1
+  Observable test
+</blockquote>
+
+<h5 > Different Types of Scedhulers </h5>
+<ul>
+      <li>Schedulers.io() : Returns a default, shared Scheduler instance intended for IO-bound work.</li>
+      <li>Schedulers.computation() : Returns a default, shared Scheduler instance intended for computational work.</li>
+      <li>Schedulers.single() : Returns a default, shared, single-thread-backed Scheduler instance for work requiring strongly-sequential execution on the same background thread.</li>
+      <li>Schedulers.newThread() : Returns a default, shared Scheduler instance that creates a new Thread for each unit of work.</li>
+</ul>
+
+
+<h4 > Flowable </h4>
+
+<p>
+Flowable implements the Reactive-Streams Pattern and offers factory methods, intermediate operators and the ability to consume reactive dataflows and operates with Publishers.
+</p>
+
+<h5> Sample Flowable emitter : </h5>
+
+{% highlight java %}
+public static void main(String[] args) throws Exception {
+      Flowable.create(flowableEmitter -> {
+            flowableEmitter.onNext("Flowable test");
+            }, BackpressureStrategy.BUFFER).subscribe(System.out::println);
+     Thread.sleep(2000);
+}
+{% endhighlight %}
+
+
+<em>
+<p>Backpressure is when in an Flowable processing pipeline, some asynchronous stages can't process the values fast enough and need a way to tell the upstream producer to slow down. Flowable takes backpressure into consideration, Observable does not.</p>
+<p>The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.</p> </em>

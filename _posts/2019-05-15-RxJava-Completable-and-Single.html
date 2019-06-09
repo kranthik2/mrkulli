@@ -1,0 +1,50 @@
+---
+layout: post
+title: RxJava completable and single
+categories: [RxJava, Completable, Single, Reactive]
+tags: [RxJava, Completable, Single, Reactive]
+background: '/img/posts/rxjava.jpeg'
+---
+
+<p>
+Completable and Single are new types introduced exclusively at RxJava that represent reduced types of Observable. 
+</p>
+<p>The  Completable represents a deferred computation <em>without </em> any value but only indication of completion or exception.</p>
+
+<h6> Sample Completable emitter : </h6>
+
+{% highlight java %}
+public static void main(String[] args) throws Exception {
+        Completable.fromAction(() -> {
+            System.out.println("Test Completable");
+        }).doOnComplete(()->{
+            System.out.println("Completable complete");
+        }).subscribe();
+        Thread.sleep(2000);
+    }
+{% endhighlight %}
+
+<p>The Single represents Reactive Pattern for a single value response, behaves similarly to Observable except that it can <em>only emit either a single successful value or an error</em></p>
+
+<h6> Sample Single emitter : </h6>
+
+{% highlight java %}
+public static void main(String[] args) throws Exception {
+        Single.create(singleEmitter -> {
+            singleEmitter.onSuccess("Single success");
+        }).doOnSuccess(System.out::println).doOnTerminate(()->{
+            System.out.println("Single completed either with success or error");
+        }).subscribe();
+        Thread.sleep(2000);
+    }
+{% endhighlight %}
+
+<h6> Single error emitter example: </h6>
+
+{% highlight java %}
+Single.create(singleEmitter -> {
+            throw new Exception("Test");
+        }).doOnError(System.out::println).doOnTerminate(() -> {
+            System.out.println("Single completed either with success or error");
+        }).subscribe();
+{% endhighlight %}

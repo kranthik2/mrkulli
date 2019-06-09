@@ -1,0 +1,87 @@
+---
+layout: post
+title: Hosting a static website using google cloud storage
+categories: [gcp, cloud, static, website]
+tags: [gcp, cloud, static, website]
+background: '/img/posts/gcp.png'
+---
+
+<p>
+Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google domains.
+</p>
+<Strong>These things you need to do before start</Strong>
+<ul>
+	<li>Select exiting project or create a new GCP project</li>
+	<li>Verify that you own or manage the domain that you will be using. <small>Make sure you are verifying the top-level domain, such as example.com, and not a subdomain, such as www.example.com</small></li>
+</ul>
+
+<h5>Creating a bucket</h5>
+<p> create a bucket whose name matches your domain name</p>
+<img class="img-fluid" src="/img/posts/bucket.png"/>
+<h5>Upload your site's files to bucket </h5>
+<ul>
+<li>In the list of buckets, find the bucket you created.</li>
+<li> you can drag and drop files to bucket or you can use gcloud sdk
+</li>
+</ul>
+<strong>If you want use gcloud sdk, follow below steps</strong>
+<ol>
+	<li>
+		Install google sdk   
+		<a href="https://cloud.google.com/sdk">using instructions for your platform</a>
+	</li>
+	<li>
+		Authicate gcloud 
+		{% highlight shell %}
+		gcloud auth login
+		{% endhighlight %}
+	</li>
+	<li>gsutil is a cli api that lets you perform actions on cloud storage, Use gsutil to upload your content, run below command from folder where your files are
+		{% highlight shell %}
+		gsutil -m rsync -d -r . gs://{your-bucket-name}
+		{% endhighlight %}
+	</li>
+	<li>
+		If you are using jekyll static site generator, you can run jekyll build and gsutil upload
+		{% highlight shell %}
+		jekyll build && gsutil -m rsync -d -r ./_site gs://{your-bucket-name}
+		{% endhighlight %}
+	</li>
+</ol>
+<h5>update bucket web site configuration</h5>
+<ol>
+<li>
+Click the more actions icon <small>3 dots</small>. next to the bucket and select Edit website configuration.</li>
+
+<blockquote>Note: This option is only available for buckets whose name matches a valid website pattern.
+</blockquote>
+
+<li>
+In the Configure website dialog, specify the Main Page and the error Page.
+</li>
+<img class="img-fluid" src="/img/posts/web_site_conf.png">
+<li>
+Click Save.
+</li>
+</ol>
+<h5>Make bucket public accessible</h5>
+<ol>
+	<li>click on the name of the bucket that you want to make public.</li>
+	<li>Select the Permissions tab near the top of the page.</li>
+	<li>Click the Add members button.</li>
+	<li>The Add members dialog box appears.</li>
+	<li>In the New members field, enter allUsers.</li>
+	<li>In the Roles drop down, select the Storage sub-menu, and click the Storage Object Viewer option.
+	</li>
+	<img class="img-fluid" src="/img/posts/bucket_access.png">
+	<li>Click Save.</li>
+</ol>
+<h5>Creating a CNAME alias</h5>
+<p>A CNAME record is a type of DNS record. It directs traffic that requests a URL from your domain to the resources you want to serve, in this case objects in your google cloud Storage bucket.</p>
+<img class="img-fluid" src="/img/posts/cname_alias.png">
+<p>To connect your domain to Cloud Storage, Create a CNAME record that points to c.storage.googleapis.com.</p>
+<p>Your domain registration service should have a way for you to administer your domain, including adding a CNAME record.</p>
+
+<h5>Testing</h5>
+<p>Verify that content is served from the bucket by requesting the domain name in a browser.<br>
+For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.</p>

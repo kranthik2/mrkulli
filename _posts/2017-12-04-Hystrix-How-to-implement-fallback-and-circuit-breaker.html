@@ -1,0 +1,171 @@
+---
+layout: post
+title: Hystrix How to implement fallback and circuit breaker
+categories: [hystrix, circuitbreaker, resilincy]
+tags: [netflix, hystrix, circuitbreaker, resilincy]
+background: '/img/posts/hystrix.png'
+---
+
+<p> Demonstrates how to use Netflix Hystrix api’s for synchronous, asynchronous execution with fallback and circuit breaker in spring (boot) application. Hystrix-javancia annotations makes easy to use hystrix with spring framework. we need to start by creating spring boot application, use spring initializer to generate sample boot application. </p>
+<p>
+For maven open pom.xml and add hystrix dependencies</p>
+
+{% highlight xml %}
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>1.5.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-javanica</artifactId>
+            <version>1.5.12</version>
+        </dependency>
+{% endhighlight  %}
+
+<p>For gradle add below dependencies to build.gradle </p>
+
+{% highlight properties %}
+compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.12'
+compile group: 'com.netflix.hystrix', name: 'hystrix-javanica', version: '1.5.12'
+
+{% endhighlight %}
+
+<h4 > HystrixCommand synchronous with fallback </h4>
+
+<p>
+To run method as synchronous hystrix command you need to annotate method with @HystrixCommand annotation and graceful degradation can be achieved by declaring name of fallback method. Below test class shows how to use hystrix commonds and intentionally throwing exception in execute method to test fallback. Fallback is enabled by default, see <a href="https://github.com/Netflix/Hystrix/wiki/Configuration">hystrix configuration </a>
+for what properties does hystrix uses and how to configure and override.</p>
+
+{% highlight java %}
+package com.kulli.hystrix.poc;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TestSynchronous {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @HystrixCommand(groupKey = "testExecute", commandKey = "cmdExecute",
+            fallbackMethod = "fallbackTest")
+    public void execute() throws Exception {
+        logger.debug("hystrix poc testing");
+        throw new RuntimeException("Throwing exception deliberately for synchronous testing");
+    }
+
+    @HystrixCommand(groupKey = "testExecute", commandKey = "cmdExecute")
+    public void fallbackTest() throws Exception {
+        logger.debug("Catching failures in fallbackTest method");
+    }
+}
+{% endhighlight %}
+
+<h4> HystrixCommand asynchronous with fallback </h4>
+
+<p>To process Hystrix asynchronously you should return an instance of asynchronous result in your command method as in the example below: </p>
+
+{% highlight java %}
+package com.kulli.hystrix.poc;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.Future;
+
+@Service
+public class TestAsynchronous {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @HystrixCommand(groupKey = "testExecuteAsync", commandKey = "cmdExecuteAsync", fallbackMethod = "fallbackAsyncTest")
+    public Future<String> executeAsync() throws RuntimeException {
+        logger.debug("hystrix async poc testing");
+        throw new RuntimeException("Throwing exception deliberately for asynchronous testing");
+    }
+
+
+    @HystrixCommand(groupKey = "testExecuteAsync", commandKey = "cmdExecuteAsync")
+    public Future<String> fallbackAsyncTest() throws RuntimeException {
+        logger.debug("Catching failures in fallbackAsyncTest method ");
+        return null;
+    }
+}
+{% endhighlight %}
+
+<h4> HystrixCommand circuit breaker </h4>
+
+<p> circuitBreaker.errorThresholdPercentage property sets the error percentage at or above which the circuit should trip open and start short-circuiting requests to fallback logic. In below example setting circuitBreaker.forceOpen to true to force short circuit and show how circuit breaker works. This property forces the circuit breaker into an open state in which it will reject all requests and forcing them to fallback method. In real time you should use circuitBreaker.errorThresholdPercentage to handle circuit breaker depends failures percentage. </p>
+
+{% highlight java %}
+package com.kulli.hystrix.poc;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TestSynchronousCircuitBreaker {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @HystrixCommand(groupKey = "executeCircuitBreaker", commandKey = "cmdCircuitTripExecute",
+            fallbackMethod = "fallbackCircuitOpen", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.forceOpen", value = "true")
+    })
+    public void executeCircuitBreaker() throws Exception {
+        logger.debug("hystrix circuit breaker poc testing");
+        throw new RuntimeException("Throwing exception deliberately for circuit breaker testing");
+    }
+
+
+    public void fallbackCircuitOpen() throws Exception {
+        logger.debug("Catching failures in fallback circuit open method");
+    }
+}
+{% endhighlight %}
+
+<p>Inject <b>HystrixCommandAspect</b> bean into boot application configuration to test hystrix command and run spring boot application mvn spring-boot:run or you can run a Spring Boot application from your IDE as a simple Java application.</p>
+
+{% highlight java %}
+package com.kulli.hystrix.poc;
+
+import com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan
+public class HystrixSamplePOCApplication {
+
+    public static void main(String[] args) throws Exception {
+        ConfigurableApplicationContext context = SpringApplication.run(HystrixSamplePOCApplication.class, args);
+        context.getBean(TestSynchronous.class).execute();
+        context.getBean(TestAsynchronous.class).executeAsync();
+    }
+
+    @Bean
+    public HystrixCommandAspect hystrixAspect() {
+        return new HystrixCommandAspect();
+    }
+}
+{% endhighlight %}
+
+
+{% highlight log %}
+2018-08-04 17:04:01.220 DEBUG 7268 --- [x-testExecute-1] com.kulli.hystrix.poc.TestSynchronous    : hystrix sync poc testing
+2018-08-04 17:04:01.227 DEBUG 7268 --- [x-testExecute-2] com.kulli.hystrix.poc.TestSynchronous    : Catching failures in fallbackTest method
+2018-08-04 17:04:01.240 DEBUG 7268 --- [tExecuteAsync-1] com.kulli.hystrix.poc.TestAsynchronous   : hystrix async poc testing
+2018-08-04 17:04:01.242 DEBUG 7268 --- [tExecuteAsync-2] com.kulli.hystrix.poc.TestAsynchronous   : Catching failures in fallbackAsyncTest method 
+2018-08-04 17:04:01.244 DEBUG 7268 --- [           main] c.k.h.poc.TestSynchronousCircuitBreaker  : Catching failures in fallback circuit open method
+{% endhighlight %}

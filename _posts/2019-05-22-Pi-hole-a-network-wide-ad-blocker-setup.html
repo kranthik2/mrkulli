@@ -1,0 +1,37 @@
+---
+layout: post
+title: Pi-hole a network wide ad blocker setup
+categories: [pihole, dnssinkhole, adblocker]
+tags: [pihole, dnssinkhole, adblocker]
+background: '/img/posts/pihole.png'
+---
+
+<p>Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.</p>
+
+<p>Pi-hole is a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software. It is cool tool and very easy to install but most of the ISP routers does not allow you to override DNS configuration and it is hard to find documentation on how to setup pi-hole as DNS server or DHCP.</p>
+
+<p>Below steps manifests how to install pihole, access pihole admin web interface and how to use it as DHCP</p>
+<p>You can install Pi-hole on raspberrypi using the following command: </p>
+
+{% highlight shell %}
+curl -sSL https://install.pi-hole.net | bash
+{% endhighlight  %}
+
+<p>
+pi-hole comes with admin (management) tool, which shows stats on all the domains being queried on your network. After pi-hole installation, you can use web interface by entering http://192.168.1.9 OR {IP_OF_MACHINE}:80/admin in browser.</p>
+
+<a href="https://play.google.com/store/apps/details?id=com.joseaviles.Pi_Hole&hl=en"> Alternatively there is pi-hole admin app available for android devices, here is the download link</a>
+
+<p>You need to update your device’s network configuration to use pi-hole as dns server, here is the sample configuration example of windows laptop.</p>
+<p> go to wifi properties -> ip settings -> edit -> add manual DHCP configuration like below</p>
+<img class="img-fluid" src="https://raw.githubusercontent.com/kranthik2/kranthik2.github.io/master/img/posts/pihole-setup.png" alt="pihole-setup">
+
+<p>A reddit user by the name _CamelCase_ created a unified hosts file to add extra domains to the block list which blocks over 1 million Domains</p>
+
+{%highlight shell%}
+https://raw.githubusercontent.com/CamelCase11/UnifiedHosts/master/hosts.all
+{% endhighlight%}
+
+<a href="https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259">Here is the guide on how to add domains to blacklist
+</a>
+<p>Enjoy setting up pi-hole for your home network.</p>

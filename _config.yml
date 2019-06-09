@@ -1,0 +1,25 @@
+title:              Mrkulli
+email:              kullik2@gmail.com
+description:        
+author:             Mrkulli
+baseurl:            "/"
+url:                "/"
+
+# Social Profiles
+twitter_username:   
+github_username:    kranthik2
+facebook_username:  
+linkedin_username:
+
+# Add your google-analytics ID here to activate google analytics
+google_analytics:   UA-141222368-1 # out your google-analytics code
+
+# Build settings
+markdown:           kramdown
+paginate:           5
+paginate_path:      "/posts/page:num/"
+highlighter:        rouge
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site

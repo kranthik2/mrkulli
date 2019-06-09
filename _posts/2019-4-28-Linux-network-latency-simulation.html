@@ -1,0 +1,32 @@
+---
+layout: post
+title: Linux network latency simulation
+categories: [linux, network, latency]
+tags: [linux, network, latency]
+---
+
+<p>In Linux traffic control tool can be used to manipulate traffic control settings</p>
+
+{% highlight shell %}
+tc qdisc add dev eth0 root handle 1: prio
+tc qdisc add dev eth0 parent 1:3 handle 30: tbf rate 20kbit buffer 1600 limit  3000
+tc qdisc add dev eth0 parent 30:1 handle 31: netem  delay 5000ms 10ms distribution normal
+tc filter add dev eth0 protocol ip parent 1:0 prio 3 u32 match ip dst 205.251.242.103/32 flowid 1:3
+{% endhighlight  %}
+
+<p><b>1st and 2nd lines</b> will substitute the pfifo_fast qdisc with the prio one.</p>
+
+qdisc is short for 'queueing discipline' and it is elementary to understanding traffic control. Whenever the kernel needs to send a packet to an interface, it is enqueued to the qdisc configured for that interface. Immediately afterwards, the kernel tries to get as many packets as possible from the qdisc, for giving them to the network adaptor driver.
+
+pfifo_fast : Standard qdisc for 'Advanced Router' enabled kernels. Consists of a three-band queue which honors Type of Service flags, as well as the priority that may be assigned to a packet.
+
+<p><b>3rd line </b> : Network Emulation (netem) provides the building blocks to create an impairment node.   NetEm is an enhancement of the Linux traffic control facilities that allow to add delay, packet loss, duplication and more other characteristics to packets outgoing from a selected network interface.</p>
+
+<p><b>4th line</b> : TC  filter is used by a classful qdisc to determine in which class a packet will be enqueued. Whenever traffic arrives at a class with subclasses, it needs to be classified. 205.251.242.103 is ipaddress of amazon.com, filter will match for specific IP  address (205.251.242.103) and will introduce delay of 5000 milliseconds. </p>
+
+<p><b>To remove latency set for ip</b></p>
+
+{% highlight shell %}
+tc qdisc del dev eth0 root
+{% endhighlight %}
+<p>All subclasses and their leaf qdiscs are automatically deleted, as well as any filters attached to them.</p>
