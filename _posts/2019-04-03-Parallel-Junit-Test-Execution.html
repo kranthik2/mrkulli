@@ -1,0 +1,43 @@
+---
+layout: post
+title: Parallel Junit Test Execution with Maven
+categories: [java, maven, junit]
+tags: [java, maven, junit]
+background: '/img/posts/maven.png'
+---
+<p>
+    Choosing the right strategy and parallel execution settings can substantially impact execution times of your application build. Apache maven surefire plugin offers a variety of options to execute tests in parallel, allows you to make best use of the hardware.
+</p>
+<h5>Parallel test execution</h5>
+<p>Obvious configuration is by using the parallel <Strong>parameter</Strong>, useUnlimitedThreads allows for an unlimited number of threads. unless specified <Strong>useUnlimitedThreads=true</Strong>, the parameter threadCount can be used with the optional parameter <Strong>perCoreThreadCount=true</Strong></p>
+<p>Sample surefire plugin configuration with parallel all and useUnlimitedThreads</p>
+{% highlight xml%}
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.2</version>
+    <configuration>
+        <parallel>all</parallel>
+        <useunlimitedthreads>true</useunlimitedthreads>
+        <percorethreadcount>true</percorethreadcount>
+    </configuration>
+</plugin>
+{% endhighlight %}
+<p>The possible values for parallel parameter includes methods, classes, both, suites, suitesAndClasses, suitesAndMethods, classesAndMethods or all</p>
+<p>In below example, the number of concurrent methods is not strictly limited: <strong>parallel=classesAndMethods</strong>, <Strong> threadCount=8 </Strong>, <strong>threadCountClasses=3</strong>. the number of parallel methods is varying from 5 to 7.</p>
+<p> Surefire reuses threads, thus optimize the thread-counts and <strong>parallelOptimized</strong> of the number of Threads is enabled by default</p>
+<p>Sample with threadCount configuration</p>
+{% highlight xml %}
+ <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.2</version>
+    <configuration>
+        <parallel>all</parallel>
+        <threadCount>8</threadCount>
+        <threadCountSuites>3</threadCountSuites>
+        <threadCountClasses>3</threadCountClasses>
+        <perCoreThreadCount>true</perCoreThreadCount>
+    </configuration>
+</plugin>
+{% endhighlight %}

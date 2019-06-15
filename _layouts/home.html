@@ -26,17 +26,17 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-
+      <div class="post-grid">
         {{ content }}
 
         <!-- Home Post List -->
-        {% for post in site.posts limit : 5 %}
-
+        {% for post in site.posts limit : 9 %}
+    
         <article class="post-preview">
           <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
             <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.subtitle %}
-            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+            {% if post.background %}
+            <img class="post-subtitle-img" src="{{site.baseurl}}{{post.background}}">
             {% else %}
             <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
             {% endif %}
@@ -52,12 +52,12 @@ layout: default
           </p>
         </article>
 
-        <hr>
+        <!-- <br> -->
 
         {% endfor %}
-
+</div>
         <!-- Pager -->
-        <div class="clearfix">
+        <div class="clearfix" style="margin-top: 5%;">
           <a class="btn btn-primary float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
         </div>
 
