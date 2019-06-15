@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    Pi-hole a network wide ad blocker setup - Mrkulli
+    Automating static website publishing using google cloud  build - Mrkulli
     
   </title>
 
-  <meta name="description" content="Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and e...">
+  <meta name="description" content="Create build trigger Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:">
 
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html">
+  <link rel="canonical" href="/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html">
   <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
 
 </head>
@@ -60,18 +60,18 @@
 
   <!-- Page Header -->
 
-<header class="masthead" style="background-image: url('/img/posts/pihole.png')">
+<header class="masthead" style="background-image: url('/img/posts/cloud-build.png')">
   
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>Pi-hole a network wide ad blocker setup</h1>
+            <h1>Automating static website publishing using google cloud  build</h1>
             
             <span class="meta">Posted by
               <a href="#">Mrkulli</a>
-              on May 22, 2019 &middot; <span class="reading-time" title="Estimated read time">
+              on June 08, 2019 &middot; <span class="reading-time" title="Estimated read time">
   
    2 mins  read </span>
 
@@ -86,44 +86,47 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
 
-        <p>Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.</p>
+        <h5>Create build trigger</h5>
+<p>Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:</p>
 
-<p>Pi-hole is a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software. It is cool tool and very easy to install but most of the ISP routers does not allow you to override DNS configuration and it is hard to find documentation on how to setup pi-hole as DNS server or DHCP.</p>
+<img class="img-fluid" src="/img/posts/add-trigger-button.png" alt="add-trigger-button">
 
-<p>Below steps manifests how to install pihole, access pihole admin web interface and how to use it as DHCP</p>
-<p>You can install Pi-hole on raspberrypi using the following command: </p>
+<p>Select GitHub as the source of your repository. In the next screen, you may be asked to authorize access to your GitHub account and repositories. This is needed for Google Cloud Source Repositories to mirror and create commit hooks on your GitHub repositories.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">curl <span class="nt">-sSL</span> https://install.pi-hole.net | bash</code></pre></figure>
+<img class="img-fluid" src="/img/posts/select-source.png" alt="select-source">
 
+<p>Then, pick your repository from the list</p>
+
+<p>In the next screen</p>
+<ol>
+<li>give this Build Trigger a name (e.g. master)</li>
+<li>choose Build Configuration "cloudbuild.yaml"</li>
+<li>choose Trigger Type ”Branch”</li>
+<li>Set the file location to cloudbuild.yaml</li>
+</ol>
+<img class="img-fluid" src="/img/posts/cloud-build-trigger.png" alt="cloud-build-trigger">
+<p>create a cloudbuild.yaml file with the following contents in your repository.</p>
+<p>I am using jekyll for static site builder, _site 	
+directory is where the generated site will be placed (by default) once Jekyll is done build. replace <strong>_site</strong> with your website content directory</p>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml"><span class="na">steps</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">gcr.io/cloud-builders/gsutil</span>
+    <span class="na">args</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">-m"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">rsync"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">-r"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">-c"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">-d"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">_site/"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">gs://{BUCKET_NAME}"</span><span class="pi">]</span></code></pre></figure>
+
+<p>YAML file declares a build step with the gsutil -m rsync command and makes sure that the website is uploaded to the storage bucket. The -m flag accelerates upload by processing multiple files in parallel and the -c flag avoids re-uploading unchanged files.</p>
+
+<h5>Trigger the first build</h5>
 <p>
-pi-hole comes with admin (management) tool, which shows stats on all the domains being queried on your network. After pi-hole installation, you can use web interface by entering http://192.168.1.9 OR {IP_OF_MACHINE}:80/admin in browser.</p>
-
-<a href="https://play.google.com/store/apps/details?id=com.joseaviles.Pi_Hole&hl=en"> Alternatively there is pi-hole admin app available for android devices, here is the download link</a>
-
-<p>You need to update your device’s network configuration to use pi-hole as dns server, here is the sample configuration example of windows laptop.</p>
-<p> go to wifi properties -> ip settings -> edit -> add manual DHCP configuration like below</p>
-<img class="img-fluid" src="/img/posts/pihole-setup.png" alt="pihole-setup">
-
-<p>A reddit user by the name _CamelCase_ created a unified hosts file to add extra domains to the block list which blocks over 1 million Domains</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">https://raw.githubusercontent.com/CamelCase11/UnifiedHosts/master/hosts.all</code></pre></figure>
-
-<a href="https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259">Here is the guide on how to add domains to blacklist
-</a>
-<p>Enjoy setting up pi-hole for your home network.</p>
-
+Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click <strong>“Run Trigger”</strong> </p>
 
         <hr>
 
         <div class="clearfix">
 
           
-          <a class="btn btn-primary float-left" href="/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html" data-toggle="tooltip" data-placement="top" title="RxJava2 error handling">&larr; Previous<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html" data-toggle="tooltip" data-placement="top" title="Hosting a static website using google cloud storage">&larr; Previous<span class="d-none d-md-inline">
               Post</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html" data-toggle="tooltip" data-placement="top" title="Hosting a static website using google cloud storage">Next<span class="d-none d-md-inline">
-              Post</span> &rarr;</a>
           
 
         </div>

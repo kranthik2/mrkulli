@@ -37,8 +37,12 @@
 <lastmod>2019-05-22T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>/gcp/cloud/static/website/2019/06/02/Hostin-a-static-website-hosting-using-google-cloud-storage.html</loc>
+<loc>/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</loc>
 <lastmod>2019-06-02T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</loc>
+<lastmod>2019-06-08T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>/about.html</loc>
@@ -54,5 +58,8 @@
 </url>
 <url>
 <loc>/posts/page2/</loc>
+</url>
+<url>
+<loc>/posts/page3/</loc>
 </url>
 </urlset>
