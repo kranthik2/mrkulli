@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Linux network latency simulation - Mrkulli
+    
+  </title>
+
+  <meta name="description" content="In Linux traffic control tool can be used to manipulate traffic control settings">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html">
+  <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Mrkulli</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+  <header class="masthead">
+    
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Linux network latency simulation</h1>
+            
+            <span class="meta">Posted by
+              <a href="#">Mrkulli</a>
+              on April 28, 2019 &middot; <span class="reading-time" title="Estimated read time">
+  
+   2 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <p>In Linux traffic control tool can be used to manipulate traffic control settings</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">tc qdisc add dev eth0 root handle 1: prio
+tc qdisc add dev eth0 parent 1:3 handle 30: tbf rate 20kbit buffer 1600 limit  3000
+tc qdisc add dev eth0 parent 30:1 handle 31: netem  delay 5000ms 10ms distribution normal
+tc filter add dev eth0 protocol ip parent 1:0 prio 3 u32 match ip dst 205.251.242.103/32 flowid 1:3</code></pre></figure>
+
+<p><b>1st and 2nd lines</b> will substitute the pfifo_fast qdisc with the prio one.</p>
+
+qdisc is short for 'queueing discipline' and it is elementary to understanding traffic control. Whenever the kernel needs to send a packet to an interface, it is enqueued to the qdisc configured for that interface. Immediately afterwards, the kernel tries to get as many packets as possible from the qdisc, for giving them to the network adaptor driver.
+
+pfifo_fast : Standard qdisc for 'Advanced Router' enabled kernels. Consists of a three-band queue which honors Type of Service flags, as well as the priority that may be assigned to a packet.
+
+<p><b>3rd line </b> : Network Emulation (netem) provides the building blocks to create an impairment node.   NetEm is an enhancement of the Linux traffic control facilities that allow to add delay, packet loss, duplication and more other characteristics to packets outgoing from a selected network interface.</p>
+
+<p><b>4th line</b> : TC  filter is used by a classful qdisc to determine in which class a packet will be enqueued. Whenever traffic arrives at a class with subclasses, it needs to be classified. 205.251.242.103 is ipaddress of amazon.com, filter will match for specific IP  address (205.251.242.103) and will introduce delay of 5000 milliseconds. </p>
+
+<p><b>To remove latency set for ip</b></p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">tc qdisc del dev eth0 root</code></pre></figure>
+<p>All subclasses and their leaf qdiscs are automatically deleted, as well as any filters attached to them.</p>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html" data-toggle="tooltip" data-placement="top" title="Parallel Junit Test Execution with Maven">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html" data-toggle="tooltip" data-placement="top" title="Reactive programming with RxJava">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-kranthikulli-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:kullik2@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/kranthik2">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Mrkulli 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/mrkulli-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script async src="//pagead2.googlesyndication.com/
+pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-3067106561982864",
+enable_page_level_ads: true
+});
+</script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141222368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141222368-1');
+</script>
+
+
+
+</body>
+
+</html>

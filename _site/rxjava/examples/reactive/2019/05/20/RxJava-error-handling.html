@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    RxJava2 error handling - Mrkulli
+    
+  </title>
+
+  <meta name="description" content="One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream&#39;s l...">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html">
+  <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Mrkulli</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/rxjava.jpeg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>RxJava2 error handling</h1>
+            
+            <span class="meta">Posted by
+              <a href="#">Mrkulli</a>
+              on May 20, 2019 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <p> One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error. </p>
+
+<p>
+Such errors are routed to the RxJavaPlugins.onError handler. This handler can be overridden with the method RxJavaPlugins.setErrorHandler(Consumer<Throwable>). Without a specific handler, RxJava defaults to printing the Throwable's stacktrace to the console and calls the current thread's uncaught exception handler. </p>
+
+<h6> Observable timeout example without error handling </h6>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">Observable</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">observableEmitter</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">observableEmitter</span><span class="o">.</span><span class="na">onNext</span><span class="o">(</span><span class="n">testObservable</span><span class="o">());</span>
+        <span class="o">}).</span><span class="na">timeout</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">).</span><span class="na">doOnError</span><span class="o">(</span><span class="n">error</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Failure occurred with observable :  "</span><span class="o">+</span><span class="n">error</span><span class="o">);</span>
+        <span class="o">}).</span><span class="na">subscribeOn</span><span class="o">(</span><span class="n">Schedulers</span><span class="o">.</span><span class="na">newThread</span><span class="o">()).</span><span class="na">subscribe</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">testObservable</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">4000</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"Test"</span><span class="o">;</span>
+    <span class="o">}</span></code></pre></figure>
+
+<strong>output : </strong>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">RxNewThreadScheduler</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">Failure</span> <span class="n">occurred</span> <span class="n">with</span> <span class="n">observable</span> <span class="o">:</span>  <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">concurrent</span><span class="o">.</span><span class="na">TimeoutException</span><span class="o">:</span> <span class="n">The</span> <span class="n">source</span> <span class="n">did</span> <span class="n">not</span> <span class="n">signal</span> <span class="n">an</span> <span class="n">event</span> <span class="k">for</span> <span class="mi">1</span> <span class="n">seconds</span> <span class="n">and</span> <span class="n">has</span> <span class="n">been</span> <span class="n">terminated</span><span class="o">.</span>
+<span class="n">io</span><span class="o">.</span><span class="na">reactivex</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">OnErrorNotImplementedException</span><span class="o">:</span> <span class="n">The</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">not</span> <span class="n">handled</span> <span class="n">due</span> <span class="n">to</span> <span class="n">missing</span> <span class="n">onError</span> <span class="n">handler</span> <span class="n">in</span> <span class="n">the</span> <span class="nf">subscribe</span><span class="o">()</span> <span class="n">method</span> <span class="n">call</span><span class="o">.</span> <span class="n">Further</span> <span class="nl">reading:</span> <span class="nl">https:</span><span class="c1">//github.com/ReactiveX/RxJava/wiki/Error-Handling | java.util.concurrent.TimeoutException: The source did not signal an event for 1 seconds and has been terminated.</span>
+  <span class="n">at</span> <span class="n">io</span><span class="o">.</span><span class="na">reactivex</span><span class="o">.</span><span class="na">internal</span><span class="o">.</span><span class="na">functions</span><span class="o">.</span><span class="na">Functions</span><span class="n">$OnErrorMissingConsumer</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="n">Functions</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">704</span><span class="o">)</span>
+  <span class="n">at</span> <span class="n">io</span><span class="o">.</span><span class="na">reactivex</span><span class="o">.</span><span class="na">internal</span><span class="o">.</span><span class="na">functions</span><span class="o">.</span><span class="na">Functions</span><span class="n">$OnErrorMissingConsumer</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="n">Functions</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">701</span><span class="o">)</span></code></pre></figure>
+
+<h6> Observable timeout example with error handler </h6>
+
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">RxJavaPlugins</span><span class="o">.</span><span class="na">setErrorHandler</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception handler : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getCause</span><span class="o">());</span>
+            <span class="c1">//you can have your exception handling implementation here.</span>
+<span class="o">});</span>
+
+<span class="n">Observable</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">observableEmitter</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">observableEmitter</span><span class="o">.</span><span class="na">onNext</span><span class="o">(</span><span class="n">testObservable</span><span class="o">());</span>
+    <span class="o">}).</span><span class="na">timeout</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">).</span><span class="na">doOnError</span><span class="o">(</span><span class="n">error</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Failure occurred with observable :  "</span> <span class="o">+</span> <span class="n">error</span><span class="o">);</span>
+<span class="o">}).</span><span class="na">subscribeOn</span><span class="o">(</span><span class="n">Schedulers</span><span class="o">.</span><span class="na">newThread</span><span class="o">()).</span><span class="na">subscribe</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span></code></pre></figure>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html" data-toggle="tooltip" data-placement="top" title="RxJava completable and single">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html" data-toggle="tooltip" data-placement="top" title="Pi-hole a network wide ad blocker setup">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-kranthikulli-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:kullik2@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/kranthik2">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Mrkulli 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/mrkulli-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script async src="//pagead2.googlesyndication.com/
+pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-3067106561982864",
+enable_page_level_ads: true
+});
+</script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141222368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141222368-1');
+</script>
+
+
+
+</body>
+
+</html>

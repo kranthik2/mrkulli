@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Hosting a static website using google cloud storage - Mrkulli
+    
+  </title>
+
+  <meta name="description" content="Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google d...">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/gcp/cloud/static/website/2019/06/02/Hostin-a-static-website-hosting-using-google-cloud-storage.html">
+  <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Mrkulli</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/gcp.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Hosting a static website using google cloud storage</h1>
+            
+            <span class="meta">Posted by
+              <a href="#">Mrkulli</a>
+              on June 02, 2019 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <p>
+Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google domains.
+</p>
+<Strong>These things you need to do before start</Strong>
+<ul>
+	<li>Select exiting project or create a new GCP project</li>
+	<li>Verify that you own or manage the domain that you will be using. <small>Make sure you are verifying the top-level domain, such as example.com, and not a subdomain, such as www.example.com</small></li>
+</ul>
+
+<h5>Creating a bucket</h5>
+<p> create a bucket whose name matches your domain name</p>
+<img class="img-fluid" src="/img/posts/bucket.png"/>
+<h5>Upload your site's files to bucket </h5>
+<ul>
+<li>In the list of buckets, find the bucket you created.</li>
+<li> you can drag and drop files to bucket or you can use gcloud sdk
+</li>
+</ul>
+<strong>If you want use gcloud sdk, follow below steps</strong>
+<ol>
+	<li>
+		Install google sdk   
+		<a href="https://cloud.google.com/sdk">using instructions for your platform</a>
+	</li>
+	<li>
+		Authicate gcloud 
+		<figure class="highlight"><pre><code class="language-shell" data-lang="shell">		gcloud auth login
+		</code></pre></figure>
+	</li>
+	<li>gsutil is a cli api that lets you perform actions on cloud storage, Use gsutil to upload your content, run below command from folder where your files are
+		<figure class="highlight"><pre><code class="language-shell" data-lang="shell">		gsutil <span class="nt">-m</span> rsync <span class="nt">-d</span> <span class="nt">-r</span> <span class="nb">.</span> gs://<span class="o">{</span>your-bucket-name<span class="o">}</span>
+		</code></pre></figure>
+	</li>
+	<li>
+		If you are using jekyll static site generator, you can run jekyll build and gsutil upload
+		<figure class="highlight"><pre><code class="language-shell" data-lang="shell">		jekyll build <span class="o">&amp;&amp;</span> gsutil <span class="nt">-m</span> rsync <span class="nt">-d</span> <span class="nt">-r</span> ./_site gs://<span class="o">{</span>your-bucket-name<span class="o">}</span>
+		</code></pre></figure>
+	</li>
+</ol>
+<h5>update bucket web site configuration</h5>
+<ol>
+<li>
+Click the more actions icon <small>3 dots</small>. next to the bucket and select Edit website configuration.</li>
+
+<blockquote>Note: This option is only available for buckets whose name matches a valid website pattern.
+</blockquote>
+
+<li>
+In the Configure website dialog, specify the Main Page and the error Page.
+</li>
+<img class="img-fluid" src="/img/posts/web_site_conf.png">
+<li>
+Click Save.
+</li>
+</ol>
+<h5>Make bucket public accessible</h5>
+<ol>
+	<li>click on the name of the bucket that you want to make public.</li>
+	<li>Select the Permissions tab near the top of the page.</li>
+	<li>Click the Add members button.</li>
+	<li>The Add members dialog box appears.</li>
+	<li>In the New members field, enter allUsers.</li>
+	<li>In the Roles drop down, select the Storage sub-menu, and click the Storage Object Viewer option.
+	</li>
+	<img class="img-fluid" src="/img/posts/bucket_access.png">
+	<li>Click Save.</li>
+</ol>
+<h5>Creating a CNAME alias</h5>
+<p>A CNAME record is a type of DNS record. It directs traffic that requests a URL from your domain to the resources you want to serve, in this case objects in your google cloud Storage bucket.</p>
+<img class="img-fluid" src="/img/posts/cname_alias.png">
+<p>To connect your domain to Cloud Storage, Create a CNAME record that points to c.storage.googleapis.com.</p>
+<p>Your domain registration service should have a way for you to administer your domain, including adding a CNAME record.</p>
+
+<h5>Testing</h5>
+<p>Verify that content is served from the bucket by requesting the domain name in a browser.<br>
+For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.</p>
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html" data-toggle="tooltip" data-placement="top" title="Pi-hole a network wide ad blocker setup">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-kranthikulli-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:kullik2@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/kranthik2">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Mrkulli 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/mrkulli-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+<script async src="//pagead2.googlesyndication.com/
+pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-3067106561982864",
+enable_page_level_ads: true
+});
+</script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141222368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141222368-1');
+</script>
+
+
+
+</body>
+
+</html>
