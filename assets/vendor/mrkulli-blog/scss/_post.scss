@@ -4,29 +4,35 @@
           display: grid;
           grid-template-columns: 0.5fr 0.5fr 0.5fr;
           grid-gap: 20px;
+          padding-bottom: 20px;
       }
       @media (min-width: 1025px) and (max-width: 1280px) {
           display: grid;
           grid-template-columns: 0.5fr 0.5fr 0.5fr;
           grid-gap: 20px;
+          padding-bottom: 20px;
       }
       @media (min-width: 768px) and (max-width: 1024px) {
           display: grid;
           grid-template-columns: 0.5fr 0.5fr 0.5fr;
           grid-gap: 20px;
+          padding-bottom: 15px;
       }
       @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
           display: grid;
           grid-template-columns: 0.5fr 0.5fr 0.5fr;
           grid-gap: 20px;
+          padding-bottom: 15px;
       }
       @media (min-width: 320px) and (max-width: 480px) {
           display: grid;
           grid-gap: 10px;
+          padding-bottom: 15px;
       }
       @media (min-width: 481px) and (max-width: 767px) {
           display: grid;
           grid-gap: 10px;
+          padding-bottom: 15px;
       }
   }
   .post-preview {

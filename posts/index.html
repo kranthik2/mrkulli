@@ -3,6 +3,7 @@ layout: page
 title: Posts
 background: '/img/bg-post.jpg'
 ---
+<div class="post-grid">
 
 {% for post in paginator.posts %}
 
@@ -25,10 +26,10 @@ background: '/img/bg-post.jpg'
   </p>
 </article>
 
-<hr>
+<!-- <hr> -->
 
 {% endfor %}
-
+</div>
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}
 
