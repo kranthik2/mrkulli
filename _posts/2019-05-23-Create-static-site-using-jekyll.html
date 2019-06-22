@@ -1,0 +1,36 @@
+---
+layout: post
+title: Create static site using jekyll
+categories: [jekyll, static, site]
+tags: [jekyll, static, site]
+background: '/img/posts/jekyll.png'
+---
+<ol>
+<li>Install a full Ruby development environment</li>
+<li>Install Jekyll and bundler gems</li>
+{% highlight shell %}
+gem install jekyll bundler
+{% endhighlight %}
+<li>Create a new Jekyll site</li>
+{% highlight shell %}
+jekyll new someblog
+{% endhighlight %}
+
+<img class="img-fluid" src="/img/posts/jekyll-create-new.png" alt="select-source">
+
+<li>Change into your new directory</li>
+{% highlight shell %}
+cd someblog
+{% endhighlight %}
+<li>Build the site by running below command</li>
+{% highlight shell %}
+bundle exec jekyll build
+{% endhighlight %}
+<li>Run server and make it available at localserver</li>
+{% highlight shell %}
+bundle exec jekyll serve
+{% endhighlight %}
+<img class="img-fluid" src="/img/posts/jekyll-server.png" alt="select-source">
+<p>go to http://localhost:4000 url and access your site</p>
+<img class="img-fluid" src="/img/posts/jekyll-sample-site.png" alt="select-source">
+</ol>
