@@ -70,13 +70,13 @@ img::-moz-selection {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
   #mainNav .navbar-brand {
     font-weight: 800;
-    color: #86C232; }
+    color: #03a87c; }
   #mainNav .navbar-toggler {
     font-size: 12px;
     font-weight: 800;
     padding: 13px;
     text-transform: uppercase;
-    color: #86C232; }
+    color: #03a87c; }
   #mainNav .navbar-nav > li.nav-item > a {
     font-size: 12px;
     font-weight: 800;
@@ -88,14 +88,14 @@ img::-moz-selection {
       background: transparent; }
       #mainNav .navbar-brand {
         padding: 10px 20px;
-        color: #86C232; }
+        color: #03a87c; }
         #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-          color: rgba(255, 255, 255, 0.8); }
+          color: rgba(3, 168, 124, 0.8); }
       #mainNav .navbar-nav > li.nav-item > a {
         padding: 10px 20px;
-        color: #86C232; }
+        color: #03a87c; }
         #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-          color: rgba(255, 255, 255, 0.8); } }
+          color: rgba(3, 168, 124, 0.8); } }
   @media only screen and (min-width: 992px) {
     #mainNav {
       -webkit-transition: background-color 0.2s;
@@ -115,8 +115,8 @@ img::-moz-selection {
         -webkit-transition: -webkit-transform 0.2s;
         -moz-transition: -moz-transform 0.2s;
         transition: transform 0.2s;
-        border-bottom: 1px solid white;
-        background-color: rgba(255, 255, 255, 0.9); }
+        border-bottom: 1px solid #03a87c;
+        background-color: rgba(3, 168, 124, 0.9); }
         #mainNav.is-fixed .navbar-brand {
           color: #212529; }
           #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
