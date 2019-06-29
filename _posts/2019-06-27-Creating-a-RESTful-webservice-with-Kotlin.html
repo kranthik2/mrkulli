@@ -1,0 +1,68 @@
+---
+layout: post
+title: Creating a REST webservice with Kotlin
+categories: [kotlin, spring]
+tags: [kotlin, spring]
+background: '/img/posts/kotlin-logo.png'
+---
+<h5>What is Kotlin</h5>
+<p>Kotlin is an OSS statically typed programming language developed by JetBrains, that targets the JVM, Android, JavaScript and Native.</p>
+<p>Kotlin is 100% interoperable with the Java programming language, more concise and reduces the number of lines of code. Kotlin is very easy to role and has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas.</p>
+
+<h5>Generate sample Spring boot application</h5>
+<p>Start by creating spring boot application, use spring initializer <a href ="https://start.spring.io/"> https://start.spring.io/</a> to generate sample boot application with Kotlin Language and select Spring web starter as dependency, which is needed for REST API development and it uses tomcat as default container.</p>
+<p>
+<img class="img-fluid" src="/img/posts/spring-initializer.png" alt="select-source">
+</p>
+<h5>Create Controller</h5>
+
+<p>Below sample controller class shows how to create HTTP GET and POST methods in Kotlin. The class is annotated with @RestController, meaning it’s ready for use by Spring MVC to handle web requests. When invoked from a browser or using curl on the command line, the method returns pure text. That’s because @RestController combines @Controller and @ResponseBody, two annotations that results in web requests returning data rather than a view.</p>
+{% highlight kotlin %}
+package com.kulli.ktdemo.controller
+
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+class SampleController {
+
+    @GetMapping("/hello-world/get", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun helloWorldGet(): String {
+        println("Received GET request")
+        return "Hello World"
+    }
+
+    @PostMapping("/hello-word/post/{inputVar}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun helloWorldPost(@PathVariable inputVar: String): String {
+        println("Received POST request : ".plus(inputVar))
+        return inputVar;
+    }
+}
+{% endhighlight %}
+
+<p> Run spring boot application using below commands </p>
+
+{% highlight shell %}
+maven : mvn spring-boot:run
+{% endhighlight %}
+
+{% highlight shell %}
+gradle : gradle bootRun
+{% endhighlight %}
+<p>
+or you can run a Spring Boot application from your IDE by running Kotlin class with main method, which starts tomcat server. spring boot uses 8080 as default port for server, access GET end point from browser using url http://localhost:8080/hello-world/get
+</p>
+
+<p>
+    
+or using curl
+
+{% highlight curl %}
+curl -X GET http://localhost:8080/hello-word/get
+
+curl -X POST http://localhost:8080/hello-word/post/test
+{% endhighlight %}
+</p>
