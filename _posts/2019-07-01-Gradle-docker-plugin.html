@@ -1,0 +1,97 @@
+---
+layout: post
+title: Using gradle plugin to run spring boot application as docker container
+categories: [gradle, docker]
+tags: [gradle, docker]
+background: '/img/posts/boot-docker.png'
+---
+
+<p>Docker has a simple "Dockerfile" file format that it uses to specify the "layers" of an image. So let’s create a Dockerfile in Spring Boot project from base image of openjdk:8-jdk-alpine</p>
+
+<strong>Dockerfile</strong>
+<p>
+{% highlight shell %}
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG DEPENDENCY=build
+RUN echo ${DEPENDENCY}
+COPY ${DEPENDENCY}/libs/ktdemo-0.0.1-SNAPSHOT.jar /app/lib/ktdemo.jar
+ENTRYPOINT ["java","-jar","/app/lib/ktdemo.jar"]
+{% endhighlight %}
+</p>
+<p>You need below two OSS plugins built by Palantir, to build and run docker container </p>
+<p>
+	<strong>com.palantir.docker:</strong> plugin provides basic tasks for building and pushing docker images based on a simple configuration block that specifies the container name, the Dockerfile, task dependencies, and any additional file resources required for the Docker build.
+</p>
+<p>
+	<strong>com.palantir.docker-run:</strong> plugin provides tasks for starting, stopping, statusing and cleaning up a named container based on a specified image
+</p>
+<p>apply plugins to gradle properties</p>
+{% highlight kotlin %}
+plugins{
+	id("com.palantir.docker") version "0.22.1"
+	id("com.palantir.docker-run") version "0.22.1"
+}
+
+{% endhighlight %}
+
+<p>Set the container name, and specify a Dockerfile, any task dependencies and file resources required for the Docker build.</p>
+
+<strong>Sample : </strong>
+{% highlight kotlin %}
+docker {
+    name = "mrkulli/ktdemo:".plus(version)
+    uri("mrkulli/ktdemo:".plus(version))
+    tag("name", "ktdemo")
+    buildArgs(ImmutableMap.of("name", "ktdemo"))
+    copySpec.from("build").into("build")
+    pull(true)
+    setDockerfile(file("Dockerfile"))
+}
+{% endhighlight %}
+
+<p>Use the dockerRun configuration block to configure the name, image and optional command to execute for the dockerRun tasks</p>
+{%highlight kotlin%}
+dockerRun {
+    name = "ktdemo"
+    image = "mrkulli/ktdemo:".plus(version)
+    ports("8080:8080")
+}
+{%endhighlight%}
+
+<p>To build a docker container, run the <b>docker</b> task, To run a docker container, run the <b>dockerRun</b> task and To push that container to a docker repository, run the <b>dockerPush</b> task.</p>
+<p>Run below command to build and run docker container : </p>
+{%highlight shell%}
+gradle clean build docker dockerRun --info
+{%endhighlight%}
+<strong>output : </strong>
+<p>
+{% highlight shell %}
+> Task :dockerRun
+Caching disabled for task ':dockerRun' because:
+  Build cache is disabled
+Task ':dockerRun' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Starting process 'command 'docker''. Working directory: C:\Users\kranthi\Documents\ktdemo Command: docker run -d -p 8080:8080 --name ktdemo mrkulli/ktdemo:0.0.1-SNAPSHOT
+Successfully started process 'command 'docker''
+ac7c50bff4b68b8c39e3d394dd93b2b973798ff7787c7c7f84c80f331d0e7c9f
+:dockerRun (Thread[Execution worker for ':' Thread 2,5,main]) completed. Took 0.54 secs.
+:dockerRunStatus (Thread[Execution worker for ':' Thread 2,5,main]) started.
+
+> Task :dockerRunStatus
+Caching disabled for task ':dockerRunStatus' because:
+  Build cache is disabled
+Task ':dockerRunStatus' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Starting process 'command 'docker''. Working directory: C:\Users\kranthi\Documents\ktdemo Command: docker inspect --format={{.State.Running}} ktdemo
+Successfully started process 'command 'docker''
+Docker container 'ktdemo' is RUNNING.
+:dockerRunStatus (Thread[Execution worker for ':' Thread 2,5,main]) completed. Took 0.12 secs.
+
+{% endhighlight %}
+</p>
+<p>When it is running you can see in the list of containers by running docker ps command 
+</p>
+<img class="img-fluid" src="/img/posts/gradle-docker.png" alt="select-source">
+
+<p>The full source code of example is over on GitHub <a href="https://github.com/kranthik2/ktdemo.git">https://github.com/kranthik2/ktdemo.git</a>.</p>
