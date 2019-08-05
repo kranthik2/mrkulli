@@ -1,0 +1,62 @@
+---
+layout: post
+title: Python mock example
+categories: [python]
+tags: [python]
+background: '/img/posts/python.png'
+---
+<h5>Introduction</h5>
+<p>
+unittest.mock is a library for testing in Python.
+It allows you to replace parts of your system under test with mock objects and make assertions
+</p>
+
+<p>mock provides a core Mock class removing the need to create a host of stubs throughout your test suite.
+  mock provides a patch() decorator. patch() acts as a function decorator, class decorator or a context manager. Inside the body of the function or with statement, the target is patched with a new object.</p>
+
+<p>Below example shows how to use mock to unit or integration test</p>
+
+<strong>Sample function:</strong>
+<p>get_env is a sample function reads foo environment variable and retuns its value</p>
+
+
+{% highlight Python %}
+import os
+
+def get_env():
+    try:
+        if os.environ['foo'] == 'bar':
+            return 'bar'
+    except KeyError as ex:
+        print('Failed to get foo environment variable')
+
+if __name__ == '__main__':
+    get_env()
+
+{% endhighlight %}
+<strong>Test Class:</strong>
+<br/>
+{% highlight Python %}
+import os
+import unittest
+from unittest import TestCase
+from unittest.mock import patch
+from sample import get_env
+
+class TestFunction(TestCase):
+
+  def test_get_env(self):
+      with patch('os.environ') as env:
+          env.return_value = {'foo': 'bar'}
+          result = get_env()
+          self.assertEqual('bar', result)
+{% endhighlight %}
+
+<p>You can mock tests with annotation like below</p>
+
+{% highlight Python %}
+@patch.dict(os.environ, {'foo': 'bar'})
+def test_get_env_with_annotation(self):
+    result = get_env()
+    self.assertEqual('bar', result)
+{% endhighlight %}
