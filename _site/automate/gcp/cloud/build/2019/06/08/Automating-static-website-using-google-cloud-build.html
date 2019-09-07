@@ -95,10 +95,6 @@
         <div class="fixed-condition">
           <h1 class="author-name"><a href="/">MrKulli</a></h1>
           
-            <div class="profile-about">
-              I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django.
-            </div>
-          
           <div class="social">
             <ul>
               
@@ -149,11 +145,11 @@
   <div class="post"><h5>Create build trigger</h5>
 <p>Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:</p>
 
-<img class="img-fluid" src="/img/posts/add-trigger-button.png" alt="add-trigger-button">
+<img class="img-fluid" src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/add-trigger-button.png" alt="add-trigger-button">
 
 <p>Select GitHub as the source of your repository. In the next screen, you may be asked to authorize access to your GitHub account and repositories. This is needed for Google Cloud Source Repositories to mirror and create commit hooks on your GitHub repositories.</p>
 
-<img class="img-fluid" src="/img/posts/select-source.png" alt="select-source">
+<img class="img-fluid" src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/select-source.png" alt="select-source">
 
 <p>Then, pick your repository from the list</p>
 
@@ -164,7 +160,7 @@
 <li>choose Trigger Type ”Branch”</li>
 <li>Set the file location to cloudbuild.yaml</li>
 </ol>
-<img class="img-fluid" src="/img/posts/cloud-build-trigger.png" alt="cloud-build-trigger">
+<img class="img-fluid" src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cloud-build-trigger.png" alt="cloud-build-trigger">
 <p>create a cloudbuild.yaml file with the following contents in your repository.</p>
 <p>I am using jekyll for static site builder, _site 	
 directory is where the generated site will be placed (by default) once Jekyll is done build. replace <strong>_site</strong> with your website content directory</p>
@@ -178,7 +174,7 @@ directory is where the generated site will be placed (by default) once Jekyll is
 <h5>Trigger the first build</h5>
 <p>
 Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click <strong>“Run Trigger”</strong> </p>
-<img class="img-fluid" src="/img/posts/cloud-triggered.png" alt="cloud-build-triggered"></div>
+<img class="img-fluid" src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cloud-triggered.png" alt="cloud-build-triggered"></div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
 

@@ -10,7 +10,7 @@ background: '/static/img/posts/dynomite.png'
 
 <p>Dynomite is the great product that offers multi master cache solution. Dynomite cluster consists of multiple data centers. A datacenter is a group of racks and rack is a group of nodes. Each rack consists of the entire dataset, which is partitioned across multiple nodes in that rack. Each node in a rack has a unique token, which helps to identify which dataset it owns.</p>
 
-<img src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/img/posts/dynomite-architecture.png"/>
+<img src="https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/dynomite-architecture.png"/>
                       
 <p>To make dynomite node contain all the data set you need to use the same token (example ‘0’) for all the nodes, So every node in the cluster will have the complete data set and make sure to use simple provider as seed provider. If you use “florida_provider”, each dynomite node will periodically reach out to a dynomite-manager (side car) rest service to obtain the cluster members, see membership protocols for how membership protocol works. You do not need to run docker with -g gossip flag (dynomite wiki document is not up to date). </p>
 

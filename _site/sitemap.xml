@@ -5,8 +5,8 @@
     <description>My Personal posts</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Sep 2019 21:38:20 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Sep 2019 21:38:20 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Sep 2019 21:59:44 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Sep 2019 21:59:44 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -145,7 +145,7 @@ Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNI
 &lt;/p&gt;
 &lt;p&gt;When it is running you can see in the list of containers by running docker ps command 
 &lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/gradle-docker.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/gradle-docker.png&quot; alt=&quot;select-source&quot;&gt;
 
 &lt;p&gt;The full source code of example is over on GitHub &lt;a href=&quot;https://github.com/kranthik2/ktdemo.git&quot;&gt;https://github.com/kranthik2/ktdemo.git&lt;/a&gt;.&lt;/p&gt;</description>
         <pubDate>Mon, 01 Jul 2019 00:00:00 -0500</pubDate>
@@ -172,7 +172,7 @@ Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNI
 &lt;h5&gt;Generate sample Spring boot application&lt;/h5&gt;
 &lt;p&gt;Start by creating spring boot application, use spring initializer &lt;a href =&quot;https://start.spring.io/&quot;&gt; https://start.spring.io/&lt;/a&gt; to generate sample boot application with Kotlin Language and select Spring web starter as dependency, which is needed for REST API development and it uses tomcat as default container.&lt;/p&gt;
 &lt;p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;spring-initializer.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/spring-initializer.png&quot; alt=&quot;select-source&quot;&gt;
 &lt;/p&gt;
 &lt;h5&gt;Create Controller&lt;/h5&gt;
 
@@ -238,11 +238,11 @@ curl -X POST http://localhost:8080/hello-word/post/test&lt;/code&gt;&lt;/pre&gt;
         <description>&lt;h5&gt;Create build trigger&lt;/h5&gt;
 &lt;p&gt;Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:&lt;/p&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/add-trigger-button.png&quot; alt=&quot;add-trigger-button&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/add-trigger-button.png&quot; alt=&quot;add-trigger-button&quot;&gt;
 
 &lt;p&gt;Select GitHub as the source of your repository. In the next screen, you may be asked to authorize access to your GitHub account and repositories. This is needed for Google Cloud Source Repositories to mirror and create commit hooks on your GitHub repositories.&lt;/p&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/select-source.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/select-source.png&quot; alt=&quot;select-source&quot;&gt;
 
 &lt;p&gt;Then, pick your repository from the list&lt;/p&gt;
 
@@ -253,7 +253,7 @@ curl -X POST http://localhost:8080/hello-word/post/test&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;choose Trigger Type ”Branch”&lt;/li&gt;
 &lt;li&gt;Set the file location to cloudbuild.yaml&lt;/li&gt;
 &lt;/ol&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-build-trigger.png&quot; alt=&quot;cloud-build-trigger&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cloud-build-trigger.png&quot; alt=&quot;cloud-build-trigger&quot;&gt;
 &lt;p&gt;create a cloudbuild.yaml file with the following contents in your repository.&lt;/p&gt;
 &lt;p&gt;I am using jekyll for static site builder, _site 	
 directory is where the generated site will be placed (by default) once Jekyll is done build. replace &lt;strong&gt;_site&lt;/strong&gt; with your website content directory&lt;/p&gt;
@@ -267,7 +267,7 @@ directory is where the generated site will be placed (by default) once Jekyll is
 &lt;h5&gt;Trigger the first build&lt;/h5&gt;
 &lt;p&gt;
 Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click &lt;strong&gt;“Run Trigger”&lt;/strong&gt; &lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</description>
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</description>
         <pubDate>Sat, 08 Jun 2019 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</link>
         <guid isPermaLink="true">http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</guid>
@@ -304,7 +304,7 @@ Describes how to configure a Cloud Storage bucket to host a static website for a
 
 &lt;h5&gt;Creating a bucket&lt;/h5&gt;
 &lt;p&gt; create a bucket whose name matches your domain name&lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/bucket.png&quot;/&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/bucket.png&quot;/&gt;
 &lt;h5&gt;Upload your site's files to bucket &lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;In the list of buckets, find the bucket you created.&lt;/li&gt;
@@ -343,7 +343,7 @@ Click the more actions icon &lt;small&gt;3 dots&lt;/small&gt;. next to the bucke
 &lt;li&gt;
 In the Configure website dialog, specify the Main Page and the error Page.
 &lt;/li&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/web_site_conf.png&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/web_site_conf.png&quot;&gt;
 &lt;li&gt;
 Click Save.
 &lt;/li&gt;
@@ -357,12 +357,12 @@ Click Save.
 	&lt;li&gt;In the New members field, enter allUsers.&lt;/li&gt;
 	&lt;li&gt;In the Roles drop down, select the Storage sub-menu, and click the Storage Object Viewer option.
 	&lt;/li&gt;
-	&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/bucket_access.png&quot;&gt;
+	&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/bucket_access.png&quot;&gt;
 	&lt;li&gt;Click Save.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5&gt;Creating a CNAME alias&lt;/h5&gt;
 &lt;p&gt;A CNAME record is a type of DNS record. It directs traffic that requests a URL from your domain to the resources you want to serve, in this case objects in your google cloud Storage bucket.&lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cname_alias.png&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cname_alias.png&quot;&gt;
 &lt;p&gt;To connect your domain to Cloud Storage, Create a CNAME record that points to c.storage.googleapis.com.&lt;/p&gt;
 &lt;p&gt;Your domain registration service should have a way for you to administer your domain, including adding a CNAME record.&lt;/p&gt;
 
@@ -404,7 +404,7 @@ For example, if you have an object named index.html stored in a bucket named www
 &lt;li&gt;Create a new Jekyll site&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;jekyll new someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-create-new.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/jekyll-create-new.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 
 &lt;li&gt;Change into your new directory&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -412,9 +412,9 @@ For example, if you have an object named index.html stored in a bucket named www
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;li&gt;Run server and make it available at localserver&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-server.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/jekyll-server.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 &lt;p&gt;go to http://localhost:4000 url and access your site&lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-sample-site.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/jekyll-sample-site.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 &lt;/ol&gt;</description>
         <pubDate>Thu, 23 May 2019 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</link>
@@ -453,7 +453,7 @@ pi-hole comes with admin (management) tool, which shows stats on all the domains
 
 &lt;p&gt;You need to update your device’s network configuration to use pi-hole as dns server, here is the sample configuration example of windows laptop.&lt;/p&gt;
 &lt;p&gt; go to wifi properties -&gt; ip settings -&gt; edit -&gt; add manual DHCP configuration like below&lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/pihole-setup.png&quot; alt=&quot;pihole-setup&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/pihole-setup.png&quot; alt=&quot;pihole-setup&quot;&gt;
 
 &lt;p&gt;A reddit user by the name _CamelCase_ created a unified hosts file to add extra domains to the block list which blocks over 1 million Domains&lt;/p&gt;
 
@@ -553,7 +553,7 @@ Completable and Single are new types introduced exclusively at RxJava that repre
 &lt;/p&gt;
 &lt;p&gt;The  Completable represents a deferred computation &lt;em&gt;without &lt;/em&gt; any value but only indication of completion or exception.&lt;/p&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/rxjava-completable.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/rxjava-completable.png&quot; alt=&quot;select-source&quot;&gt;
 
 &lt;h6&gt; Sample Completable emitter : &lt;/h6&gt;
 
@@ -624,7 +624,7 @@ RxJava is an alternative to the more limited ways of doing asynchronous code in 
 &lt;p&gt;
 An observer subscribes to an Observable then that observer reacts to whatever item or sequence of items the Observable emits. This pattern facilitates concurrent operations because it does not need to block while waiting for the Observable to emit objects, but instead it creates a sentry in the form of an observer that stands ready to react appropriately at whatever future time the Observable does so.&lt;/p&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/rxjava-observable.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/rxjava-observable.png&quot; alt=&quot;select-source&quot;&gt;
   
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Observable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
@@ -800,7 +800,7 @@ pfifo_fast : Standard qdisc for 'Advanced Router' enabled kernels. Consists of a
 
 &lt;p&gt;Dynomite is the great product that offers multi master cache solution. Dynomite cluster consists of multiple data centers. A datacenter is a group of racks and rack is a group of nodes. Each rack consists of the entire dataset, which is partitioned across multiple nodes in that rack. Each node in a rack has a unique token, which helps to identify which dataset it owns.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/img/posts/dynomite-architecture.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/dynomite-architecture.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;To make dynomite node contain all the data set you need to use the same token (example ‘0’) for all the nodes, So every node in the cluster will have the complete data set and make sure to use simple provider as seed provider. If you use “florida_provider”, each dynomite node will periodically reach out to a dynomite-manager (side car) rest service to obtain the cluster members, see membership protocols for how membership protocol works. You do not need to run docker with -g gossip flag (dynomite wiki document is not up to date). &lt;/p&gt;
 

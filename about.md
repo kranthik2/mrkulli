@@ -4,6 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django. Now, I am doing more on backend.
+Professional with 7+ years of experience in the IT industry comprising of build release
+management, software configuration, design, development and cloud implementation.
 
-email: agus[at]python.web.id
+email: kullik2@gmail.com
