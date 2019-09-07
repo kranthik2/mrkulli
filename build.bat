@@ -1,1 +1,0 @@
-gsutil -m rsync -r -c -d _site/ gs://www.mrkulli.com
