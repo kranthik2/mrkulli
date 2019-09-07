@@ -1,78 +1,1102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>http://localhost:4000/hystrix/circuitbreaker/resilincy/2017/12/04/Hystrix-How-to-implement-fallback-and-circuit-breaker.html</loc>
-<lastmod>2017-12-04T00:00:00-06:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/docker/iptables/firewall/linux/2018/07/18/Docker-container-network-isolation-using-iptables.html</loc>
-<lastmod>2018-07-18T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/netflix/dynomite/redis/cache/2018/08/05/Redis-cache-master-master-solution-with-Netflix-Dynomite-without-Sharding.html</loc>
-<lastmod>2018-08-05T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html</loc>
-<lastmod>2019-04-03T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html</loc>
-<lastmod>2019-04-28T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</loc>
-<lastmod>2019-05-11T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</loc>
-<lastmod>2019-05-15T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</loc>
-<lastmod>2019-05-20T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</loc>
-<lastmod>2019-05-22T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</loc>
-<lastmod>2019-05-23T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</loc>
-<lastmod>2019-06-02T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</loc>
-<lastmod>2019-06-08T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</loc>
-<lastmod>2019-06-27T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</loc>
-<lastmod>2019-07-01T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/python/2019/07/02/Python-Mock-example.html</loc>
-<lastmod>2019-07-02T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/about.html</loc>
-</url>
-<url>
-<loc>http://localhost:4000/contact.html</loc>
-</url>
-<url>
-<loc>http://localhost:4000/contact/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/posts/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/</loc>
-</url>
-</urlset>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts</title>
+    <description>My Personal posts</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 06 Sep 2019 21:38:20 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Sep 2019 21:38:20 -0500</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Python mock example</title>
+        <description>&lt;h5&gt;Introduction&lt;/h5&gt;
+&lt;p&gt;
+unittest.mock is a library for testing in Python.
+It allows you to replace parts of your system under test with mock objects and make assertions
+&lt;/p&gt;
+
+&lt;p&gt;mock provides a core Mock class removing the need to create a host of stubs throughout your test suite.
+  mock provides a patch() decorator. patch() acts as a function decorator, class decorator or a context manager. Inside the body of the function or with statement, the target is patched with a new object.&lt;/p&gt;
+
+&lt;p&gt;Below example shows how to use mock to unit or integration test&lt;/p&gt;
+
+&lt;strong&gt;Sample function:&lt;/strong&gt;
+&lt;p&gt;get_env is a sample function reads foo environment variable and retuns its value&lt;/p&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;KeyError&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Failed to get foo environment variable'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;strong&gt;Test Class:&lt;/strong&gt;
+&lt;br/&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;unittest&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;unittest&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TestCase&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;unittest.mock&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sample&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'os.environ'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;return_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+          &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assertEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can mock tests with annotation like below&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@patch.dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_get_env_with_annotation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assertEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Tue, 02 Jul 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/python/2019/07/02/Python-Mock-example.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2019/07/02/Python-Mock-example.html</guid>
+        
+        <category>python</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Using gradle plugin to run spring boot application as docker container</title>
+        <description>&lt;p&gt;Docker has a simple &quot;Dockerfile&quot; file format that it uses to specify the &quot;layers&quot; of an image. So let’s create a Dockerfile in Spring Boot project from base image of openjdk:8-jdk-alpine&lt;/p&gt;
+
+&lt;strong&gt;Dockerfile&lt;/strong&gt;
+&lt;p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG &lt;span class=&quot;nv&quot;&gt;DEPENDENCY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;build
+RUN &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DEPENDENCY&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+COPY &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DEPENDENCY&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/libs/ktdemo-0.0.1-SNAPSHOT.jar /app/lib/ktdemo.jar
+ENTRYPOINT &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;java&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;-jar&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;/app/lib/ktdemo.jar&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;You need below two OSS plugins built by Palantir, to build and run docker container &lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;com.palantir.docker:&lt;/strong&gt; plugin provides basic tasks for building and pushing docker images based on a simple configuration block that specifies the container name, the Dockerfile, task dependencies, and any additional file resources required for the Docker build.
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;com.palantir.docker-run:&lt;/strong&gt; plugin provides tasks for starting, stopping, statusing and cleaning up a named container based on a specified image
+&lt;/p&gt;
+&lt;p&gt;apply plugins to gradle properties&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.palantir.docker&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0.22.1&quot;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.palantir.docker-run&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0.22.1&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Set the container name, and specify a Dockerfile, any task dependencies and file resources required for the Docker build.&lt;/p&gt;
+
+&lt;strong&gt;Sample : &lt;/strong&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mrkulli/ktdemo:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mrkulli/ktdemo:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ktdemo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;buildArgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImmutableMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ktdemo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;copySpec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;into&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;setDockerfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Dockerfile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Use the dockerRun configuration block to configure the name, image and optional command to execute for the dockerRun tasks&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;n&quot;&gt;dockerRun&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ktdemo&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mrkulli/ktdemo:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8080:8080&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To build a docker container, run the &lt;b&gt;docker&lt;/b&gt; task, To run a docker container, run the &lt;b&gt;dockerRun&lt;/b&gt; task and To push that container to a docker repository, run the &lt;b&gt;dockerPush&lt;/b&gt; task.&lt;/p&gt;
+&lt;p&gt;Run below command to build and run docker container : &lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gradle clean build docker dockerRun &lt;span class=&quot;nt&quot;&gt;--info&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;strong&gt;output : &lt;/strong&gt;
+&lt;p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Task :dockerRun
+Caching disabled &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;task &lt;span class=&quot;s1&quot;&gt;':dockerRun'&lt;/span&gt; because:
+  Build cache is disabled
+Task &lt;span class=&quot;s1&quot;&gt;':dockerRun'&lt;/span&gt; is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Starting process &lt;span class=&quot;s1&quot;&gt;'command '&lt;/span&gt;docker&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Working directory: C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;ranthi&lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;ocuments&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;tdemo Command: docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8080:8080 &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; ktdemo mrkulli/ktdemo:0.0.1-SNAPSHOT
+Successfully started process &lt;span class=&quot;s1&quot;&gt;'command '&lt;/span&gt;docker&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+ac7c50bff4b68b8c39e3d394dd93b2b973798ff7787c7c7f84c80f331d0e7c9f
+:dockerRun &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Thread[Execution worker &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;':'&lt;/span&gt; Thread 2,5,main]&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; completed. Took 0.54 secs.
+:dockerRunStatus &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Thread[Execution worker &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;':'&lt;/span&gt; Thread 2,5,main]&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; started.
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Task :dockerRunStatus
+Caching disabled &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;task &lt;span class=&quot;s1&quot;&gt;':dockerRunStatus'&lt;/span&gt; because:
+  Build cache is disabled
+Task &lt;span class=&quot;s1&quot;&gt;':dockerRunStatus'&lt;/span&gt; is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Starting process &lt;span class=&quot;s1&quot;&gt;'command '&lt;/span&gt;docker&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Working directory: C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;ranthi&lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;ocuments&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;tdemo Command: docker inspect &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ktdemo
+Successfully started process &lt;span class=&quot;s1&quot;&gt;'command '&lt;/span&gt;docker&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNING.
+:dockerRunStatus &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Thread[Execution worker &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;':'&lt;/span&gt; Thread 2,5,main]&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; completed. Took 0.12 secs.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;When it is running you can see in the list of containers by running docker ps command 
+&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/gradle-docker.png&quot; alt=&quot;select-source&quot;&gt;
+
+&lt;p&gt;The full source code of example is over on GitHub &lt;a href=&quot;https://github.com/kranthik2/ktdemo.git&quot;&gt;https://github.com/kranthik2/ktdemo.git&lt;/a&gt;.&lt;/p&gt;</description>
+        <pubDate>Mon, 01 Jul 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</link>
+        <guid isPermaLink="true">http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</guid>
+        
+        <category>gradle</category>
+        
+        <category>docker</category>
+        
+        
+        <category>gradle</category>
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Creating a REST webservice with Kotlin</title>
+        <description>&lt;h5&gt;What is Kotlin&lt;/h5&gt;
+&lt;p&gt;Kotlin is an OSS statically typed programming language developed by JetBrains, that targets the JVM, Android, JavaScript and Native.&lt;/p&gt;
+&lt;p&gt;Kotlin is 100% interoperable with the Java programming language, more concise and reduces the number of lines of code. Kotlin is very easy to role and has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas.&lt;/p&gt;
+
+&lt;h5&gt;Generate sample Spring boot application&lt;/h5&gt;
+&lt;p&gt;Start by creating spring boot application, use spring initializer &lt;a href =&quot;https://start.spring.io/&quot;&gt; https://start.spring.io/&lt;/a&gt; to generate sample boot application with Kotlin Language and select Spring web starter as dependency, which is needed for REST API development and it uses tomcat as default container.&lt;/p&gt;
+&lt;p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;spring-initializer.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;/p&gt;
+&lt;h5&gt;Create Controller&lt;/h5&gt;
+
+&lt;p&gt;Below sample controller class shows how to create HTTP GET and POST methods in Kotlin. The class is annotated with @RestController, meaning it’s ready for use by Spring MVC to handle web requests. When invoked from a browser or using curl on the command line, the method returns pure text. That’s because @RestController combines @Controller and @ResponseBody, two annotations that results in web requests returning data rather than a view.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-kotlin&quot; data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.kulli.ktdemo.controller&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.http.MediaType&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.GetMapping&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.PathVariable&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.PostMapping&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.RestController&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;@RestController&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-world/get&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received GET request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;@PostMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-word/post/{inputVar}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldPost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@PathVariable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received POST request : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt; Run spring boot application using below commands &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;maven : mvn spring-boot:run&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gradle : gradle bootRun&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;
+or you can run a Spring Boot application from your IDE by running Kotlin class with main method, which starts tomcat server. spring boot uses 8080 as default port for server, access GET end point from browser using url http://localhost:8080/hello-world/get
+&lt;/p&gt;
+
+&lt;p&gt;
+    
+or using curl
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-curl&quot; data-lang=&quot;curl&quot;&gt;curl -X GET http://localhost:8080/hello-word/get
+
+curl -X POST http://localhost:8080/hello-word/post/test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;/p&gt;</description>
+        <pubDate>Thu, 27 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</link>
+        <guid isPermaLink="true">http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</guid>
+        
+        <category>kotlin</category>
+        
+        <category>spring</category>
+        
+        
+        <category>kotlin</category>
+        
+        <category>spring</category>
+        
+      </item>
+    
+      <item>
+        <title>Automating static website publishing using google cloud  build</title>
+        <description>&lt;h5&gt;Create build trigger&lt;/h5&gt;
+&lt;p&gt;Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:&lt;/p&gt;
+
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/add-trigger-button.png&quot; alt=&quot;add-trigger-button&quot;&gt;
+
+&lt;p&gt;Select GitHub as the source of your repository. In the next screen, you may be asked to authorize access to your GitHub account and repositories. This is needed for Google Cloud Source Repositories to mirror and create commit hooks on your GitHub repositories.&lt;/p&gt;
+
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/select-source.png&quot; alt=&quot;select-source&quot;&gt;
+
+&lt;p&gt;Then, pick your repository from the list&lt;/p&gt;
+
+&lt;p&gt;In the next screen&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;give this Build Trigger a name (e.g. master)&lt;/li&gt;
+&lt;li&gt;choose Build Configuration &quot;cloudbuild.yaml&quot;&lt;/li&gt;
+&lt;li&gt;choose Trigger Type ”Branch”&lt;/li&gt;
+&lt;li&gt;Set the file location to cloudbuild.yaml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-build-trigger.png&quot; alt=&quot;cloud-build-trigger&quot;&gt;
+&lt;p&gt;create a cloudbuild.yaml file with the following contents in your repository.&lt;/p&gt;
+&lt;p&gt;I am using jekyll for static site builder, _site 	
+directory is where the generated site will be placed (by default) once Jekyll is done build. replace &lt;strong&gt;_site&lt;/strong&gt; with your website content directory&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yml&quot; data-lang=&quot;yml&quot;&gt;&lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gcr.io/cloud-builders/gsutil&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-m&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;rsync&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-r&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-c&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-d&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;_site/&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;gs://{BUCKET_NAME}&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;YAML file declares a build step with the gsutil -m rsync command and makes sure that the website is uploaded to the storage bucket. The -m flag accelerates upload by processing multiple files in parallel and the -c flag avoids re-uploading unchanged files.&lt;/p&gt;
+
+&lt;h5&gt;Trigger the first build&lt;/h5&gt;
+&lt;p&gt;
+Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click &lt;strong&gt;“Run Trigger”&lt;/strong&gt; &lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</description>
+        <pubDate>Sat, 08 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</link>
+        <guid isPermaLink="true">http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</guid>
+        
+        <category>automate</category>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>build</category>
+        
+        
+        <category>automate</category>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>build</category>
+        
+      </item>
+    
+      <item>
+        <title>Hosting a static website using google cloud storage</title>
+        <description>&lt;p&gt;
+Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google domains.
+&lt;/p&gt;
+&lt;Strong&gt;These things you need to do before start&lt;/Strong&gt;
+&lt;ul&gt;
+	&lt;li&gt;Select exiting project or create a new GCP project&lt;/li&gt;
+	&lt;li&gt;Verify that you own or manage the domain that you will be using. &lt;small&gt;Make sure you are verifying the top-level domain, such as example.com, and not a subdomain, such as www.example.com&lt;/small&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;Creating a bucket&lt;/h5&gt;
+&lt;p&gt; create a bucket whose name matches your domain name&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/bucket.png&quot;/&gt;
+&lt;h5&gt;Upload your site's files to bucket &lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;In the list of buckets, find the bucket you created.&lt;/li&gt;
+&lt;li&gt; you can drag and drop files to bucket or you can use gcloud sdk
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;strong&gt;If you want use gcloud sdk, follow below steps&lt;/strong&gt;
+&lt;ol&gt;
+	&lt;li&gt;
+		Install google sdk   
+		&lt;a href=&quot;https://cloud.google.com/sdk&quot;&gt;using instructions for your platform&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		Authicate gcloud 
+		&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;		gcloud auth login
+		&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	&lt;/li&gt;
+	&lt;li&gt;gsutil is a cli api that lets you perform actions on cloud storage, Use gsutil to upload your content, run below command from folder where your files are
+		&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;		gsutil &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; rsync &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; gs://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;your-bucket-name&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		If you are using jekyll static site generator, you can run jekyll build and gsutil upload
+		&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;		jekyll build &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; gsutil &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; rsync &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; ./_site gs://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;your-bucket-name&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5&gt;update bucket web site configuration&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+Click the more actions icon &lt;small&gt;3 dots&lt;/small&gt;. next to the bucket and select Edit website configuration.&lt;/li&gt;
+
+&lt;blockquote&gt;Note: This option is only available for buckets whose name matches a valid website pattern.
+&lt;/blockquote&gt;
+
+&lt;li&gt;
+In the Configure website dialog, specify the Main Page and the error Page.
+&lt;/li&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/web_site_conf.png&quot;&gt;
+&lt;li&gt;
+Click Save.
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5&gt;Make bucket public accessible&lt;/h5&gt;
+&lt;ol&gt;
+	&lt;li&gt;click on the name of the bucket that you want to make public.&lt;/li&gt;
+	&lt;li&gt;Select the Permissions tab near the top of the page.&lt;/li&gt;
+	&lt;li&gt;Click the Add members button.&lt;/li&gt;
+	&lt;li&gt;The Add members dialog box appears.&lt;/li&gt;
+	&lt;li&gt;In the New members field, enter allUsers.&lt;/li&gt;
+	&lt;li&gt;In the Roles drop down, select the Storage sub-menu, and click the Storage Object Viewer option.
+	&lt;/li&gt;
+	&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/bucket_access.png&quot;&gt;
+	&lt;li&gt;Click Save.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5&gt;Creating a CNAME alias&lt;/h5&gt;
+&lt;p&gt;A CNAME record is a type of DNS record. It directs traffic that requests a URL from your domain to the resources you want to serve, in this case objects in your google cloud Storage bucket.&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cname_alias.png&quot;&gt;
+&lt;p&gt;To connect your domain to Cloud Storage, Create a CNAME record that points to c.storage.googleapis.com.&lt;/p&gt;
+&lt;p&gt;Your domain registration service should have a way for you to administer your domain, including adding a CNAME record.&lt;/p&gt;
+
+&lt;h5&gt;Testing&lt;/h5&gt;
+&lt;p&gt;Verify that content is served from the bucket by requesting the domain name in a browser.&lt;br&gt;
+For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.&lt;/p&gt;</description>
+        <pubDate>Sun, 02 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</link>
+        <guid isPermaLink="true">http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</guid>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>static</category>
+        
+        <category>website</category>
+        
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>static</category>
+        
+        <category>website</category>
+        
+      </item>
+    
+      <item>
+        <title>Create static site using Jekyll</title>
+        <description>&lt;p&gt;Jekyll is a Ruby Gem and a simple, blog-aware, static site generator that can be installed on most systems. 
+&lt;/p&gt;
+&lt;h5&gt;how to generate site using Jekyll&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Install a full Ruby development environment https://jekyllrb.com/docs/installation/&lt;/li&gt;
+&lt;li&gt;Install Jekyll and bundler gems&lt;/li&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gem install jekyll bundler&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;li&gt;Create a new Jekyll site&lt;/li&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;jekyll new someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-create-new.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+
+&lt;li&gt;Change into your new directory&lt;/li&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;li&gt;Build the site by running below command&lt;/li&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;li&gt;Run server and make it available at localserver&lt;/li&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-server.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;p&gt;go to http://localhost:4000 url and access your site&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-sample-site.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;/ol&gt;</description>
+        <pubDate>Thu, 23 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</guid>
+        
+        <category>jekyll</category>
+        
+        <category>static</category>
+        
+        <category>site</category>
+        
+        
+        <category>jekyll</category>
+        
+        <category>static</category>
+        
+        <category>site</category>
+        
+      </item>
+    
+      <item>
+        <title>Pi-hole a network wide ad blocker setup</title>
+        <description>&lt;p&gt;Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.&lt;/p&gt;
+
+&lt;p&gt;Pi-hole is a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software. It is cool tool and very easy to install but most of the ISP routers does not allow you to override DNS configuration and it is hard to find documentation on how to setup pi-hole as DNS server or DHCP.&lt;/p&gt;
+
+&lt;p&gt;Below steps manifests how to install pihole, access pihole admin web interface and how to use it as DHCP&lt;/p&gt;
+&lt;p&gt;You can install Pi-hole on raspberrypi using the following command: &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;curl &lt;span class=&quot;nt&quot;&gt;-sSL&lt;/span&gt; https://install.pi-hole.net | bash&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+pi-hole comes with admin (management) tool, which shows stats on all the domains being queried on your network. After pi-hole installation, you can use web interface by entering http://192.168.1.9 OR {IP_OF_MACHINE}:80/admin in browser.&lt;/p&gt;
+
+&lt;a href=&quot;https://play.google.com/store/apps/details?id=com.joseaviles.Pi_Hole&amp;hl=en&quot;&gt; Alternatively there is pi-hole admin app available for android devices, here is the download link&lt;/a&gt;
+
+&lt;p&gt;You need to update your device’s network configuration to use pi-hole as dns server, here is the sample configuration example of windows laptop.&lt;/p&gt;
+&lt;p&gt; go to wifi properties -&gt; ip settings -&gt; edit -&gt; add manual DHCP configuration like below&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/pihole-setup.png&quot; alt=&quot;pihole-setup&quot;&gt;
+
+&lt;p&gt;A reddit user by the name _CamelCase_ created a unified hosts file to add extra domains to the block list which blocks over 1 million Domains&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;https://raw.githubusercontent.com/CamelCase11/UnifiedHosts/master/hosts.all&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;a href=&quot;https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259&quot;&gt;Here is the guide on how to add domains to blacklist
+&lt;/a&gt;
+&lt;p&gt;Enjoy setting up pi-hole for your home network.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</link>
+        <guid isPermaLink="true">http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</guid>
+        
+        <category>pihole</category>
+        
+        <category>dnssinkhole</category>
+        
+        <category>adblocker</category>
+        
+        
+        <category>pihole</category>
+        
+        <category>dnssinkhole</category>
+        
+        <category>adblocker</category>
+        
+      </item>
+    
+      <item>
+        <title>RxJava2 error handling</title>
+        <description>&lt;p&gt; One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error. &lt;/p&gt;
+
+&lt;p&gt;
+Such errors are routed to the RxJavaPlugins.onError handler. This handler can be overridden with the method RxJavaPlugins.setErrorHandler(Consumer&lt;Throwable&gt;). Without a specific handler, RxJava defaults to printing the Throwable's stacktrace to the console and calls the current thread's uncaught exception handler. &lt;/p&gt;
+
+&lt;h6&gt; Observable timeout example without error handling &lt;/h6&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testObservable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SECONDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failure occurred with observable :  &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testObservable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;currentThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;strong&gt;output : &lt;/strong&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;RxNewThreadScheduler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Failure&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;occurred&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;concurrent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TimeoutException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;The&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;did&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;been&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;terminated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reactivex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnErrorNotImplementedException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;The&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;was&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handled&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;due&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onError&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Further&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;reading:&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//github.com/ReactiveX/RxJava/wiki/Error-Handling | java.util.concurrent.TimeoutException: The source did not signal an event for 1 seconds and has been terminated.&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reactivex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;internal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Functions&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$OnErrorMissingConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;704&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reactivex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;internal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Functions&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;$OnErrorMissingConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Functions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;701&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h6&gt; Observable timeout example with error handler &lt;/h6&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;RxJavaPlugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setErrorHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Exception handler : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCause&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//you can have your exception handling implementation here.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testObservable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SECONDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failure occurred with observable :  &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 20 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Examples</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Examples</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+      <item>
+        <title>RxJava completable and single</title>
+        <description>&lt;p&gt;
+Completable and Single are new types introduced exclusively at RxJava that represent reduced types of Observable. 
+&lt;/p&gt;
+&lt;p&gt;The  Completable represents a deferred computation &lt;em&gt;without &lt;/em&gt; any value but only indication of completion or exception.&lt;/p&gt;
+
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/rxjava-completable.png&quot; alt=&quot;select-source&quot;&gt;
+
+&lt;h6&gt; Sample Completable emitter : &lt;/h6&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Completable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fromAction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test Completable&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnComplete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()-&amp;gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Completable complete&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The Single represents Reactive Pattern for a single value response, behaves similarly to Observable except that it can &lt;em&gt;only emit either a single successful value or an error&lt;/em&gt;&lt;/p&gt;
+
+&lt;h6&gt; Sample Single emitter : &lt;/h6&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Single&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;singleEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onSuccess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Single success&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnSuccess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnTerminate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()-&amp;gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Single completed either with success or error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h6&gt; Single error emitter example: &lt;/h6&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Single&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnTerminate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Single completed either with success or error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Wed, 15 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Completable</category>
+        
+        <category>Single</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Completable</category>
+        
+        <category>Single</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+      <item>
+        <title>Reactive programming with RxJava</title>
+        <description>&lt;p&gt;Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.&lt;/p&gt;
+
+&lt;p&gt;
+RxJava is a Reactive Programming library for composing asynchronous and event-based programs by using observable sequences, coupled with some other features like functional programming, and easy concurrency makes RxJava a useful library. 
+RxJava is an alternative to the more limited ways of doing asynchronous code in the JDK, in order to be more efficient with resources and increase an application's capacity to serve large number of clients, without the headache of writing low-level concurrent or and parallelized code
+&lt;/p&gt;
+
+&lt;h4 &gt; Observable &lt;/h4&gt;
+
+&lt;p&gt;
+An observer subscribes to an Observable then that observer reacts to whatever item or sequence of items the Observable emits. This pattern facilitates concurrent operations because it does not need to block while waiting for the Observable to emit objects, but instead it creates a sentry in the form of an observer that stands ready to react appropriately at whatever future time the Observable does so.&lt;/p&gt;
+
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/rxjava-observable.png&quot; alt=&quot;select-source&quot;&gt;
+  
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Observable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+
+Observable is intended for push (reactive) but can also be used for pull (interactive). It is lazy rather than eager. It can be used asynchronously or synchronously. It can represent 0, 1, many, or infinite values or events over time.
+
+&lt;/p&gt;
+&lt;p&gt;
+You can introduce multithreading into observable operators by instructing operators to operate on particular Schedulers.
+&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;currentThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Observable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+output :
+  RxNewThreadScheduler-1
+  Observable test
+&lt;/blockquote&gt;
+
+&lt;h5 &gt; Different Types of Scedhulers &lt;/h5&gt;
+&lt;ul&gt;
+      &lt;li&gt;Schedulers.io() : Returns a default, shared Scheduler instance intended for IO-bound work.&lt;/li&gt;
+      &lt;li&gt;Schedulers.computation() : Returns a default, shared Scheduler instance intended for computational work.&lt;/li&gt;
+      &lt;li&gt;Schedulers.single() : Returns a default, shared, single-thread-backed Scheduler instance for work requiring strongly-sequential execution on the same background thread.&lt;/li&gt;
+      &lt;li&gt;Schedulers.newThread() : Returns a default, shared Scheduler instance that creates a new Thread for each unit of work.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h4 &gt; Flowable &lt;/h4&gt;
+
+&lt;p&gt;
+Flowable implements the Reactive-Streams Pattern and offers factory methods, intermediate operators and the ability to consume reactive dataflows and operates with Publishers.
+&lt;/p&gt;
+
+&lt;h5&gt; Sample Flowable emitter : &lt;/h5&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;Flowable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flowableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;flowableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Flowable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BackpressureStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BUFFER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+&lt;em&gt;
+&lt;p&gt;Backpressure is when in an Flowable processing pipeline, some asynchronous stages can't process the values fast enough and need a way to tell the upstream producer to slow down. Flowable takes backpressure into consideration, Observable does not.&lt;/p&gt;
+&lt;p&gt;The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.&lt;/p&gt; &lt;/em&gt;
+</description>
+        <pubDate>Sat, 11 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Java</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Java</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux network latency simulation</title>
+        <description>&lt;p&gt;In Linux traffic control tool can be used to manipulate traffic control settings&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;tc qdisc add dev eth0 root handle 1: prio
+tc qdisc add dev eth0 parent 1:3 handle 30: tbf rate 20kbit buffer 1600 limit  3000
+tc qdisc add dev eth0 parent 30:1 handle 31: netem  delay 5000ms 10ms distribution normal
+tc filter add dev eth0 protocol ip parent 1:0 prio 3 u32 match ip dst 205.251.242.103/32 flowid 1:3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;b&gt;1st and 2nd lines&lt;/b&gt; will substitute the pfifo_fast qdisc with the prio one.&lt;/p&gt;
+
+qdisc is short for 'queueing discipline' and it is elementary to understanding traffic control. Whenever the kernel needs to send a packet to an interface, it is enqueued to the qdisc configured for that interface. Immediately afterwards, the kernel tries to get as many packets as possible from the qdisc, for giving them to the network adaptor driver.
+
+pfifo_fast : Standard qdisc for 'Advanced Router' enabled kernels. Consists of a three-band queue which honors Type of Service flags, as well as the priority that may be assigned to a packet.
+
+&lt;p&gt;&lt;b&gt;3rd line &lt;/b&gt; : Network Emulation (netem) provides the building blocks to create an impairment node.   NetEm is an enhancement of the Linux traffic control facilities that allow to add delay, packet loss, duplication and more other characteristics to packets outgoing from a selected network interface.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;4th line&lt;/b&gt; : TC  filter is used by a classful qdisc to determine in which class a packet will be enqueued. Whenever traffic arrives at a class with subclasses, it needs to be classified. 205.251.242.103 is ipaddress of amazon.com, filter will match for specific IP  address (205.251.242.103) and will introduce delay of 5000 milliseconds. &lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;To remove latency set for ip&lt;/b&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;tc qdisc del dev eth0 root&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;All subclasses and their leaf qdiscs are automatically deleted, as well as any filters attached to them.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 28 Apr 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html</guid>
+        
+        <category>linux</category>
+        
+        <category>network</category>
+        
+        <category>latency</category>
+        
+        
+        <category>linux</category>
+        
+        <category>network</category>
+        
+        <category>latency</category>
+        
+      </item>
+    
+      <item>
+        <title>Parallel Junit Test Execution with Maven</title>
+        <description>&lt;p&gt;
+    Choosing the right strategy and parallel execution settings can substantially impact execution times of your application build. Apache maven surefire plugin offers a variety of options to execute tests in parallel, allows you to make best use of the hardware.
+&lt;/p&gt;
+&lt;h5&gt;Parallel test execution&lt;/h5&gt;
+&lt;p&gt;Obvious configuration is by using the parallel &lt;Strong&gt;parameter&lt;/Strong&gt;, useUnlimitedThreads allows for an unlimited number of threads. unless specified &lt;Strong&gt;useUnlimitedThreads=true&lt;/Strong&gt;, the parameter threadCount can be used with the optional parameter &lt;Strong&gt;perCoreThreadCount=true&lt;/Strong&gt;&lt;/p&gt;
+&lt;p&gt;Sample surefire plugin configuration with parallel all and useUnlimitedThreads&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-surefire-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.22.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;parallel&amp;gt;&lt;/span&gt;all&lt;span class=&quot;nt&quot;&gt;&amp;lt;/parallel&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;useunlimitedthreads&amp;gt;&lt;/span&gt;true&lt;span class=&quot;nt&quot;&gt;&amp;lt;/useunlimitedthreads&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;percorethreadcount&amp;gt;&lt;/span&gt;true&lt;span class=&quot;nt&quot;&gt;&amp;lt;/percorethreadcount&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;The possible values for parallel parameter includes methods, classes, both, suites, suitesAndClasses, suitesAndMethods, classesAndMethods or all&lt;/p&gt;
+&lt;p&gt;In below example, the number of concurrent methods is not strictly limited: &lt;strong&gt;parallel=classesAndMethods&lt;/strong&gt;, &lt;Strong&gt; threadCount=8 &lt;/Strong&gt;, &lt;strong&gt;threadCountClasses=3&lt;/strong&gt;. the number of parallel methods is varying from 5 to 7.&lt;/p&gt;
+&lt;p&gt; Surefire reuses threads, thus optimize the thread-counts and &lt;strong&gt;parallelOptimized&lt;/strong&gt; of the number of Threads is enabled by default&lt;/p&gt;
+&lt;p&gt;Sample with threadCount configuration&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-surefire-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.22.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;parallel&amp;gt;&lt;/span&gt;all&lt;span class=&quot;nt&quot;&gt;&amp;lt;/parallel&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;threadCount&amp;gt;&lt;/span&gt;8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/threadCount&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;threadCountSuites&amp;gt;&lt;/span&gt;3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/threadCountSuites&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;threadCountClasses&amp;gt;&lt;/span&gt;3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/threadCountClasses&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;perCoreThreadCount&amp;gt;&lt;/span&gt;true&lt;span class=&quot;nt&quot;&gt;&amp;lt;/perCoreThreadCount&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</description>
+        <pubDate>Wed, 03 Apr 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html</link>
+        <guid isPermaLink="true">http://localhost:4000/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html</guid>
+        
+        <category>java</category>
+        
+        <category>maven</category>
+        
+        <category>junit</category>
+        
+        
+        <category>java</category>
+        
+        <category>maven</category>
+        
+        <category>junit</category>
+        
+      </item>
+    
+      <item>
+        <title>Redis cache master-master solution with Netflix Dynomite without Sharding</title>
+        <description>&lt;p&gt; This article discusses about how to run Dynomite as docker container and offers solution for Non-Sharding and multi master replication. Sharing lessons learned while setting up multi master cache solution, so you do not hit the same pitfalls. Sharding is mainly for very large scale applications, with lots of data and adds additional programming and operational complexity to application. If your application uses couple of GB’s memory and bound by read/write performance, you do not need Sharding. &lt;/p&gt;
+
+&lt;p&gt;Dynomite is the great product that offers multi master cache solution. Dynomite cluster consists of multiple data centers. A datacenter is a group of racks and rack is a group of nodes. Each rack consists of the entire dataset, which is partitioned across multiple nodes in that rack. Each node in a rack has a unique token, which helps to identify which dataset it owns.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/img/posts/dynomite-architecture.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To make dynomite node contain all the data set you need to use the same token (example ‘0’) for all the nodes, So every node in the cluster will have the complete data set and make sure to use simple provider as seed provider. If you use “florida_provider”, each dynomite node will periodically reach out to a dynomite-manager (side car) rest service to obtain the cluster members, see membership protocols for how membership protocol works. You do not need to run docker with -g gossip flag (dynomite wiki document is not up to date). &lt;/p&gt;
+
+&lt;p&gt;
+Below is the sample dynomite.yml file for 4-node cluster with two nodes in two data centers and single node in a rack to replicate total data set to ALL nodes : &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;dyn_o_mite&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;datacenter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dc1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;rack&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rack1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;dyn_listen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:8103&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;dyn_seed_provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;simple_provider&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;dyn_seeds&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;149.191.72.64:8103:dc1:rack2:0&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;149.191.72.65:8103:dc2:rack1:0&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;149.191.72.66:8103:dc2:rack2:0&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:8102&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;servers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;127.0.0.1:22122:1&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;preconnect&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;server_retry_timeout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;30000&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;10000&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;server_failure_limit&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;20&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0'&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pem_key_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/apps/dynomite/conf/dynomite.pem&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;data_store&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stats_listen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:22222&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;secure_server_option&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;none&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;read_consistency&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;DC_QUORUM&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;write_consistency&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;DC_QUORUM&lt;/span&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+Above configuration uses DC_QUORUM consistency, that means reads and writes are propagated synchronously to quorum number of nodes in the local data center and asynchronously to the rest. Consistency is runtime configurable and can be separately configurable for read and writes. Dynomite communicates with other nodes for replication through peer port, 8103 in this case, make sure port is open between nodes for communication.
+&lt;/p&gt;
+
+&lt;p&gt;
+Update conf/redis_single.yml with updated dynomite.yml or update the &lt;a href=&quot;https://github.com/Netflix/dynomite/blob/dev/docker/scripts/startup.sh&quot;&gt;statup script &lt;/a&gt;  with updated dynomite.yml name. &lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/p&amp;gt;
+Git clone dynomite, docker build and run container. &amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;git clone &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; dev https://github.com/Netflix/dynomite.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;dynomite/docker
+docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; dynomite_poc &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; dynomite_poc_instance &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; dynomite_poc&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sun, 05 Aug 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/netflix/dynomite/redis/cache/2018/08/05/Redis-cache-master-master-solution-with-Netflix-Dynomite-without-Sharding.html</link>
+        <guid isPermaLink="true">http://localhost:4000/netflix/dynomite/redis/cache/2018/08/05/Redis-cache-master-master-solution-with-Netflix-Dynomite-without-Sharding.html</guid>
+        
+        <category>netflix</category>
+        
+        <category>dynomite</category>
+        
+        <category>redis</category>
+        
+        <category>cache</category>
+        
+        
+        <category>netflix</category>
+        
+        <category>dynomite</category>
+        
+        <category>redis</category>
+        
+        <category>cache</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker container network isolation using iptables</title>
+        <description>&lt;p&gt;Iptables is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel. Several different tables may be defined. Each table contains a number of built-in chains and may also contain user-defined chains.&lt;/p&gt;
+
+&lt;p&gt;
+Each chain is a list of rules which can match a set of packets. Each rule specifies what to do with a packet that matches. This is called a 'target', which may be a jump to a user-defined chain in the same table.&lt;/p&gt;
+
+&lt;p&gt;
+A firewall rule specifies criteria for a packet, and a target. If the packet does not match, the next rule in the chain is the examined; if it does match, then the next rule is specified by the value of the target, which can be the name of a user-defined chain or one of the special values ACCEPT, DROP, QUEUE, or RETURN. ACCEPT means to let the packet through. DROP means to drop the packet on the floor. QUEUE means to pass the packet to userspace.
+&lt;/p&gt;
+
+&lt;p&gt;
+On Linux, Docker manipulates iptables rules to provide network isolation. All of Docker’s iptables rules are added to the DOCKER chain. Do not manipulate this table manually. If you need to add rules which load before Docker’s rules, add them to the DOCKER-USER chain. These rules are loaded before any rules Docker creates automatically.
+&lt;/p&gt;
+
+&lt;strong&gt;Restrict connections to the Docker container&lt;/strong&gt;
+
+&lt;p&gt;
+By default, all external source IPs are allowed to connect to the Docker. To allow only a specific IP or network to access the containers, insert a negated rule at the top of the DOCKER filter chain. For example, the following rule restricts external access to all IP addresses except  172.217.0.142:
+&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;iptables &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; DOCKER-USER &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ext_if &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; 172.217.0.142 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; DROP&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+You could instead allow connections from a source subnet. The following rule only allows access from the subnet  172.217.0.142/24:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;iptables &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; DOCKER-USER &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ext_if &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;  172.217.0.142/24 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; DROP&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;
+ you can specify a range of IP addresses to accept using --src-range or -s : &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;iptables &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; DOCKER-USER &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; iprange &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ext_if &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; 192.168.1.1-192.168.1.3 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; DROP&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Wed, 18 Jul 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/docker/iptables/firewall/linux/2018/07/18/Docker-container-network-isolation-using-iptables.html</link>
+        <guid isPermaLink="true">http://localhost:4000/docker/iptables/firewall/linux/2018/07/18/Docker-container-network-isolation-using-iptables.html</guid>
+        
+        <category>docker</category>
+        
+        <category>iptables</category>
+        
+        <category>firewall</category>
+        
+        <category>linux</category>
+        
+        
+        <category>docker</category>
+        
+        <category>iptables</category>
+        
+        <category>firewall</category>
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Hystrix How to implement fallback and circuit breaker</title>
+        <description>&lt;p&gt; Demonstrates how to use Netflix Hystrix api’s for synchronous, asynchronous execution with fallback and circuit breaker in spring (boot) application. Hystrix-javancia annotations makes easy to use hystrix with spring framework. we need to start by creating spring boot application, use spring initializer to generate sample boot application. &lt;/p&gt;
+&lt;p&gt;
+For maven open pom.xml and add hystrix dependencies&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.netflix.hystrix&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;hystrix-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.12&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.netflix.hystrix&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;hystrix-javanica&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.12&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For gradle add below dependencies to build.gradle &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-properties&quot; data-lang=&quot;properties&quot;&gt;&lt;span class=&quot;err&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.12'&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;py&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'com.netflix.hystrix', name: 'hystrix-javanica', version: '1.5.12'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 &gt; HystrixCommand synchronous with fallback &lt;/h4&gt;
+
+&lt;p&gt;
+To run method as synchronous hystrix command you need to annotate method with @HystrixCommand annotation and graceful degradation can be achieved by declaring name of fallback method. Below test class shows how to use hystrix commonds and intentionally throwing exception in execute method to test fallback. Fallback is enabled by default, see &lt;a href=&quot;https://github.com/Netflix/Hystrix/wiki/Configuration&quot;&gt;hystrix configuration &lt;/a&gt;
+for what properties does hystrix uses and how to configure and override.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;kulli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hystrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;poc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestSynchronous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;testExecute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cmdExecute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fallbackMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fallbackTest&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hystrix poc testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Throwing exception deliberately for synchronous testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;testExecute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cmdExecute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fallbackTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catching failures in fallbackTest method&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4&gt; HystrixCommand asynchronous with fallback &lt;/h4&gt;
+
+&lt;p&gt;To process Hystrix asynchronously you should return an instance of asynchronous result in your command method as in the example below: &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;kulli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hystrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;poc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.concurrent.Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestAsynchronous&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;testExecuteAsync&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cmdExecuteAsync&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fallbackMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fallbackAsyncTest&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;executeAsync&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RuntimeException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hystrix async poc testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Throwing exception deliberately for asynchronous testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+    &lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;testExecuteAsync&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cmdExecuteAsync&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fallbackAsyncTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RuntimeException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catching failures in fallbackAsyncTest method &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4&gt; HystrixCommand circuit breaker &lt;/h4&gt;
+
+&lt;p&gt; circuitBreaker.errorThresholdPercentage property sets the error percentage at or above which the circuit should trip open and start short-circuiting requests to fallback logic. In below example setting circuitBreaker.forceOpen to true to force short circuit and show how circuit breaker works. This property forces the circuit breaker into an open state in which it will reject all requests and forcing them to fallback method. In real time you should use circuitBreaker.errorThresholdPercentage to handle circuit breaker depends failures percentage. &lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;kulli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hystrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;poc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.slf4j.LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestSynchronousCircuitBreaker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;executeCircuitBreaker&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandKey&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;cmdCircuitTripExecute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fallbackMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fallbackCircuitOpen&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commandProperties&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;@HystrixProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;circuitBreaker.forceOpen&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;executeCircuitBreaker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hystrix circuit breaker poc testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Throwing exception deliberately for circuit breaker testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fallbackCircuitOpen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catching failures in fallback circuit open method&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Inject &lt;b&gt;HystrixCommandAspect&lt;/b&gt; bean into boot application configuration to test hystrix command and run spring boot application mvn spring-boot:run or you can run a Spring Boot application from your IDE as a simple Java application.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;kulli&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hystrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;poc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.autoconfigure.SpringBootApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.ConfigurableApplicationContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.annotation.Bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.annotation.ComponentScan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HystrixSamplePOCApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ConfigurableApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HystrixSamplePOCApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestSynchronous&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestAsynchronous&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;executeAsync&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HystrixCommandAspect&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hystrixAspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HystrixCommandAspect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-log&quot; data-lang=&quot;log&quot;&gt;2018-08-04 17:04:01.220 DEBUG 7268 --- [x-testExecute-1] com.kulli.hystrix.poc.TestSynchronous    : hystrix sync poc testing
+2018-08-04 17:04:01.227 DEBUG 7268 --- [x-testExecute-2] com.kulli.hystrix.poc.TestSynchronous    : Catching failures in fallbackTest method
+2018-08-04 17:04:01.240 DEBUG 7268 --- [tExecuteAsync-1] com.kulli.hystrix.poc.TestAsynchronous   : hystrix async poc testing
+2018-08-04 17:04:01.242 DEBUG 7268 --- [tExecuteAsync-2] com.kulli.hystrix.poc.TestAsynchronous   : Catching failures in fallbackAsyncTest method 
+2018-08-04 17:04:01.244 DEBUG 7268 --- [           main] c.k.h.poc.TestSynchronousCircuitBreaker  : Catching failures in fallback circuit open method&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 04 Dec 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/hystrix/circuitbreaker/resilincy/2017/12/04/Hystrix-How-to-implement-fallback-and-circuit-breaker.html</link>
+        <guid isPermaLink="true">http://localhost:4000/hystrix/circuitbreaker/resilincy/2017/12/04/Hystrix-How-to-implement-fallback-and-circuit-breaker.html</guid>
+        
+        <category>netflix</category>
+        
+        <category>hystrix</category>
+        
+        <category>circuitbreaker</category>
+        
+        <category>resilincy</category>
+        
+        
+        <category>hystrix</category>
+        
+        <category>circuitbreaker</category>
+        
+        <category>resilincy</category>
+        
+      </item>
+    
+  </channel>
+</rss>

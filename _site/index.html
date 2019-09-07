@@ -1,512 +1,185 @@
 <!DOCTYPE html>
-
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <title>MrKulli</title>
+    <meta name="author" content="MrKulli" />
+    <meta name="description" content="My Personal posts" />
+    <meta name="keywords" content="Posts, hystrix, circuitbreaker, resilincy, docker, iptables, firewall, linux, netflix, dynomite, redis, cache, java, maven, junit, network, latency, RxJava, Java, Reactive, Completable, Single, Examples, pihole, dnssinkhole, adblocker, jekyll, static, site, gcp, cloud, website, automate, build, kotlin, spring, gradle, python" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <meta content="1749788565247320" property="fb:app_id">
+    <meta content="Posts" property="og:site_name">
 
-<head>
+    
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+      <meta content="Posts" property="og:title">
+      <meta content="website" property="og:type">
+    
 
-  <title>
-    Mrkulli
-  </title>
+    
+      <meta content="My Personal posts" property="og:description">
+    
 
-  <meta name="description" content="">
+    
+      <meta content="http://localhost:4000/" property="og:url">
+    
 
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
 
-  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    
 
-  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+    
 
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
-  <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
+    
 
-</head>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@github.io">
+    <meta name="twitter:creator" content="@github.io">
 
+    
+      <meta name="twitter:title" content="Posts">
+    
 
-<body>
+    
+      <meta name="twitter:url" content="http://localhost:4000/">
+    
 
-  <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="/">Mrkulli</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/posts">Posts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    
+      <meta name="twitter:description" content="My Personal posts">
+    
 
+    
 
-  <!-- Page Header -->
-<!--  -->
-<!--header class="masthead" style="background-image: url('/img/mrkulli.png')">
-  
-    <div class="overlay"></div>
+    <!-- Font awesome icons -->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/static/css/syntax.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/super-search.css">
+    <link rel="stylesheet" href="/static/css/thickbox.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    
+  </head>
+  <body>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-<!--             <h1>Mrkulli</h1> -->
- <!--           
+      <div class="col-sm-3">
+        <div class="fixed-condition">
+          <h1 class="author-name"><a href="/">MrKulli</a></h1>
+          
+            <div class="profile-about">
+              I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django.
+            </div>
+          
+          <div class="social">
+            <ul>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              
+                <li><a href="https://stackoverflow.com/users/3195676/whocares?tab=profile" target="_blank"><i class="fa fa-stack-exchange"></i></a></li>
+              
+                <li><a href="https://github.com/kranthik2" target="_blank"><i class="fa fa-github"></i></a></li>
+              
+            </ul>
           </div>
+          <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">Home</a></li>
+            
+              <li><a class="about" href="/about/">About Me</a></li>
+            
+              <li><a class="about" href="/projects/">My Projects</a></li>
+            
+              <li><a class="about" href="/feed.xml">XML Feed</a></li>
+            
+          </ul>
         </div>
+        <!-- end /.fixed-condition -->
       </div>
-    </div>
-  </header-->
+      <div class="col-sm-8 col-offset-1 main-layout">
+        <div id="home">
+  <h1>Posts</h1>
+  <hr />
 
-  <div class="container container-top">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="post-grid">
-        
-
-        <!-- Home Post List -->
-        
+  <ol class="posts">
     
-        <article class="post-preview">
-          <a href="/python/2019/07/02/Python-Mock-example.html">
-            <h2 class="post-title">Python mock example</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/python.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            July 02, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/python/2019/07/02/Python-Mock-example.html">Python mock example</a> &raquo; <i><span>02 Jul 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/gradle/docker/2019/07/01/Gradle-docker-plugin.html">
-            <h2 class="post-title">Using gradle plugin to run spring boot application as docker container</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/boot-docker.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            July 01, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   4 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/gradle/docker/2019/07/01/Gradle-docker-plugin.html">Using gradle plugin to run spring boot application as docker container</a> &raquo; <i><span>01 Jul 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html">
-            <h2 class="post-title">Creating a REST webservice with Kotlin</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/kotlin-logo.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            June 27, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   3 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html">Creating a REST webservice with Kotlin</a> &raquo; <i><span>27 Jun 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html">
-            <h2 class="post-title">Automating static website publishing using google cloud  build</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/cloud-build.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            June 08, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html">Automating static website publishing using google cloud  build</a> &raquo; <i><span>08 Jun 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html">
-            <h2 class="post-title">Hosting a static website using google cloud storage</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/gcp.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            June 02, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   3 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html">Hosting a static website using google cloud storage</a> &raquo; <i><span>02 Jun 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html">
-            <h2 class="post-title">Create static site using Jekyll</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/jekyll.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            May 23, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   1 min  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html">Create static site using Jekyll</a> &raquo; <i><span>23 May 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html">
-            <h2 class="post-title">Pi-hole a network wide ad blocker setup</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/pihole.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            May 22, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html">Pi-hole a network wide ad blocker setup</a> &raquo; <i><span>22 May 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html">
-            <h2 class="post-title">RxJava2 error handling</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/rxjava.jpeg">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            May 20, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   3 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html">RxJava2 error handling</a> &raquo; <i><span>20 May 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html">
-            <h2 class="post-title">RxJava completable and single</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/rxjava.jpeg">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            May 15, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html">RxJava completable and single</a> &raquo; <i><span>15 May 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html">
-            <h2 class="post-title">Reactive programming with RxJava</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/rxjava.jpeg">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            May 11, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   4 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html">Reactive programming with RxJava</a> &raquo; <i><span>11 May 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html">
-            <h2 class="post-title">Linux network latency simulation</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/linux-iptables.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            April 28, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html">Linux network latency simulation</a> &raquo; <i><span>28 Apr 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html">
-            <h2 class="post-title">Parallel Junit Test Execution with Maven</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/maven.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            April 03, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   1 min  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/java/maven/junit/2019/04/03/Parallel-Junit-Test-Execution.html">Parallel Junit Test Execution with Maven</a> &raquo; <i><span>03 Apr 2019</span></i></li>
     
-        <article class="post-preview">
-          <a href="/netflix/dynomite/redis/cache/2018/08/05/Redis-cache-master-master-solution-with-Netflix-Dynomite-without-Sharding.html">
-            <h2 class="post-title">Redis cache master-master solution with Netflix Dynomite without Sharding</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/dynomite.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            August 05, 2018 &middot; <span class="reading-time" title="Estimated read time">
-  
-   3 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/netflix/dynomite/redis/cache/2018/08/05/Redis-cache-master-master-solution-with-Netflix-Dynomite-without-Sharding.html">Redis cache master-master solution with Netflix Dynomite without Sharding</a> &raquo; <i><span>05 Aug 2018</span></i></li>
     
-        <article class="post-preview">
-          <a href="/docker/iptables/firewall/linux/2018/07/18/Docker-container-network-isolation-using-iptables.html">
-            <h2 class="post-title">Docker container network isolation using iptables</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/docker.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            July 18, 2018 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <!-- <br> -->
-
-        
+      <li><a href="/docker/iptables/firewall/linux/2018/07/18/Docker-container-network-isolation-using-iptables.html">Docker container network isolation using iptables</a> &raquo; <i><span>18 Jul 2018</span></i></li>
     
-        <article class="post-preview">
-          <a href="/hystrix/circuitbreaker/resilincy/2017/12/04/Hystrix-How-to-implement-fallback-and-circuit-breaker.html">
-            <h2 class="post-title">Hystrix How to implement fallback and circuit breaker</h2>
-            
-            <img class="post-subtitle-img" src="/img/posts/hystrix.png">
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            Mrkulli
-            
-            on
-            December 04, 2017 &middot; <span class="reading-time" title="Estimated read time">
+      <li><a href="/hystrix/circuitbreaker/resilincy/2017/12/04/Hystrix-How-to-implement-fallback-and-circuit-breaker.html">Hystrix How to implement fallback and circuit breaker</a> &raquo; <i><span>04 Dec 2017</span></i></li>
+    
+  </ol>
+
+  <!-- Pagination links -->
   
-   8 mins  read </span>
-            
-          </p>
-        </article>
+</div><!-- end #home -->
 
-        <!-- <br> -->
-
-        
-</div>
-        <!-- Pager -->
-        <div class="clearfix" style="margin-top: 5%;">
-          <a class="btn btn-primary float-right" href="/posts">View All Posts &rarr;</a>
-        </div>
-
+        <footer>
+          &copy; MrKulli
+          
+            - <a href="https://github.com/kranthik2/mrkulli">https://github.com/kranthik2/mrkulli</a> - Powered by Jekyll.
+          
+          <div class="btn-github" style="float:right;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=kranthik2&repo=mrkulli&type=star&count=true" frameborder="0" scrolling="0" width="100" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=kranthik2&repo=mrkulli&type=fork&count=true" frameborder="0" scrolling="0" width="100" height="20px"></iframe>
+          </div>
+        </footer>
       </div>
+      <!-- end /.col-sm-8 -->
     </div>
-  </div>
+    <!-- end /.container -->
 
-
-  <!-- Footer -->
-
-<hr>
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          
-          <li class="list-inline-item">
-            <a href="mailto:kullik2@gmail.com">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/kranthik2">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        <p class="copyright text-muted">Copyright &copy; Mrkulli 2019</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-  <script src="/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/vendor/mrkulli-blog/js/clean-blog.min.js"></script>
-
-<script src="/assets/scripts.js"></script>
-<script async src="//pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-google_ad_client: "ca-pub-3067106561982864",
-enable_page_level_ads: true
-});
-</script>
-
-
-
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141222368-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-141222368-1');
-</script>
-
-
-
-</body>
-
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/super-search.js"></script>
+    <script src="/static/js/thickbox-compressed.js"></script>
+    <script src="/static/js/projects.js"></script>
+  </body>
 </html>
+

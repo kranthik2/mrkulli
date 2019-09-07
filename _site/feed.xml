@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-04T21:17:34-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mrkulli</title><author><name>Mrkulli</name></author><entry><title type="html">Python mock example</title><link href="http://localhost:4000/python/2019/07/02/Python-Mock-example.html" rel="alternate" type="text/html" title="Python mock example" /><published>2019-07-02T00:00:00-05:00</published><updated>2019-07-02T00:00:00-05:00</updated><id>http://localhost:4000/python/2019/07/02/Python-Mock-example</id><content type="html" xml:base="http://localhost:4000/python/2019/07/02/Python-Mock-example.html">&lt;h5&gt;Introduction&lt;/h5&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts</title>
+    <description>My Personal posts</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 06 Sep 2019 21:38:20 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Sep 2019 21:38:20 -0500</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Python mock example</title>
+        <description>&lt;h5&gt;Introduction&lt;/h5&gt;
 &lt;p&gt;
 unittest.mock is a library for testing in Python.
 It allows you to replace parts of your system under test with mock objects and make assertions
@@ -42,10 +55,25 @@ It allows you to replace parts of your system under test with mock objects and m
 
 &lt;p&gt;You can mock tests with annotation like below&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@patch.dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_get_env_with_annotation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assertEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Mrkulli</name></author><category term="python" /><summary type="html">Introduction unittest.mock is a library for testing in Python. It allows you to replace parts of your system under test with mock objects and make assertions</summary></entry><entry><title type="html">Using gradle plugin to run spring boot application as docker container</title><link href="http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html" rel="alternate" type="text/html" title="Using gradle plugin to run spring boot application as docker container" /><published>2019-07-01T00:00:00-05:00</published><updated>2019-07-01T00:00:00-05:00</updated><id>http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin</id><content type="html" xml:base="http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html">&lt;p&gt;Docker has a simple &quot;Dockerfile&quot; file format that it uses to specify the &quot;layers&quot; of an image. So let’s create a Dockerfile in Spring Boot project from base image of openjdk:8-jdk-alpine&lt;/p&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assertEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Tue, 02 Jul 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/python/2019/07/02/Python-Mock-example.html</link>
+        <guid isPermaLink="true">http://localhost:4000/python/2019/07/02/Python-Mock-example.html</guid>
+        
+        <category>python</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Using gradle plugin to run spring boot application as docker container</title>
+        <description>&lt;p&gt;Docker has a simple &quot;Dockerfile&quot; file format that it uses to specify the &quot;layers&quot; of an image. So let’s create a Dockerfile in Spring Boot project from base image of openjdk:8-jdk-alpine&lt;/p&gt;
 
 &lt;strong&gt;Dockerfile&lt;/strong&gt;
 &lt;p&gt;
@@ -119,14 +147,32 @@ Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNI
 &lt;/p&gt;
 &lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/gradle-docker.png&quot; alt=&quot;select-source&quot;&gt;
 
-&lt;p&gt;The full source code of example is over on GitHub &lt;a href=&quot;https://github.com/kranthik2/ktdemo.git&quot;&gt;https://github.com/kranthik2/ktdemo.git&lt;/a&gt;.&lt;/p&gt;</content><author><name>Mrkulli</name></author><category term="gradle" /><category term="docker" /><summary type="html">Docker has a simple &quot;Dockerfile&quot; file format that it uses to specify the &quot;layers&quot; of an image. So let’s create a Dockerfile in Spring Boot project from base image of openjdk:8-jdk-alpine</summary></entry><entry><title type="html">Creating a REST webservice with Kotlin</title><link href="http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html" rel="alternate" type="text/html" title="Creating a REST webservice with Kotlin" /><published>2019-06-27T00:00:00-05:00</published><updated>2019-06-27T00:00:00-05:00</updated><id>http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin</id><content type="html" xml:base="http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html">&lt;h5&gt;What is Kotlin&lt;/h5&gt;
+&lt;p&gt;The full source code of example is over on GitHub &lt;a href=&quot;https://github.com/kranthik2/ktdemo.git&quot;&gt;https://github.com/kranthik2/ktdemo.git&lt;/a&gt;.&lt;/p&gt;</description>
+        <pubDate>Mon, 01 Jul 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</link>
+        <guid isPermaLink="true">http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</guid>
+        
+        <category>gradle</category>
+        
+        <category>docker</category>
+        
+        
+        <category>gradle</category>
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Creating a REST webservice with Kotlin</title>
+        <description>&lt;h5&gt;What is Kotlin&lt;/h5&gt;
 &lt;p&gt;Kotlin is an OSS statically typed programming language developed by JetBrains, that targets the JVM, Android, JavaScript and Native.&lt;/p&gt;
 &lt;p&gt;Kotlin is 100% interoperable with the Java programming language, more concise and reduces the number of lines of code. Kotlin is very easy to role and has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas.&lt;/p&gt;
 
 &lt;h5&gt;Generate sample Spring boot application&lt;/h5&gt;
 &lt;p&gt;Start by creating spring boot application, use spring initializer &lt;a href =&quot;https://start.spring.io/&quot;&gt; https://start.spring.io/&lt;/a&gt; to generate sample boot application with Kotlin Language and select Spring web starter as dependency, which is needed for REST API development and it uses tomcat as default container.&lt;/p&gt;
 &lt;p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/spring-initializer.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;spring-initializer.png&quot; alt=&quot;select-source&quot;&gt;
 &lt;/p&gt;
 &lt;h5&gt;Create Controller&lt;/h5&gt;
 
@@ -139,17 +185,17 @@ Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNI
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.PostMapping&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.RestController&lt;/span&gt;
 
-&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;@RestController&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 
-    &lt;span class=&quot;nd&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-world/get&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-world/get&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received GET request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    &lt;span class=&quot;nd&quot;&gt;@PostMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-word/post/{inputVar}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldPost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@PathVariable&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;@PostMapping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/hello-word/post/{inputVar}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;produces&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APPLICATION_JSON_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;helloWorldPost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;@PathVariable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received POST request : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -171,7 +217,25 @@ or using curl
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-curl&quot; data-lang=&quot;curl&quot;&gt;curl -X GET http://localhost:8080/hello-word/get
 
 curl -X POST http://localhost:8080/hello-word/post/test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;/p&gt;</content><author><name>Mrkulli</name></author><category term="kotlin" /><category term="spring" /><summary type="html">What is Kotlin Kotlin is an OSS statically typed programming language developed by JetBrains, that targets the JVM, Android, JavaScript and Native. Kotlin is 100% interoperable with the Java programming language, more concise and reduces the number of lines of code. Kotlin is very easy to role and has both object-oriented and functional constructs. You can use it in both OO and FP styles, or mix elements of the two. With first-class support for features such as higher-order functions, function types and lambdas.</summary></entry><entry><title type="html">Automating static website publishing using google cloud build</title><link href="http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html" rel="alternate" type="text/html" title="Automating static website publishing using google cloud  build" /><published>2019-06-08T00:00:00-05:00</published><updated>2019-06-08T00:00:00-05:00</updated><id>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build</id><content type="html" xml:base="http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html">&lt;h5&gt;Create build trigger&lt;/h5&gt;
+&lt;/p&gt;</description>
+        <pubDate>Thu, 27 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</link>
+        <guid isPermaLink="true">http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</guid>
+        
+        <category>kotlin</category>
+        
+        <category>spring</category>
+        
+        
+        <category>kotlin</category>
+        
+        <category>spring</category>
+        
+      </item>
+    
+      <item>
+        <title>Automating static website publishing using google cloud  build</title>
+        <description>&lt;h5&gt;Create build trigger&lt;/h5&gt;
 &lt;p&gt;Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:&lt;/p&gt;
 
 &lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/add-trigger-button.png&quot; alt=&quot;add-trigger-button&quot;&gt;
@@ -203,7 +267,33 @@ directory is where the generated site will be placed (by default) once Jekyll is
 &lt;h5&gt;Trigger the first build&lt;/h5&gt;
 &lt;p&gt;
 Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click &lt;strong&gt;“Run Trigger”&lt;/strong&gt; &lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</content><author><name>Mrkulli</name></author><category term="automate" /><category term="gcp" /><category term="cloud" /><category term="build" /><summary type="html">Create build trigger Go to Goggle Cloud Build → Build Triggers section on the GCP Console and click “Add trigger”:</summary></entry><entry><title type="html">Hosting a static website using google cloud storage</title><link href="http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html" rel="alternate" type="text/html" title="Hosting a static website using google cloud storage" /><published>2019-06-02T00:00:00-05:00</published><updated>2019-06-02T00:00:00-05:00</updated><id>http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage</id><content type="html" xml:base="http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html">&lt;p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</description>
+        <pubDate>Sat, 08 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</link>
+        <guid isPermaLink="true">http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</guid>
+        
+        <category>automate</category>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>build</category>
+        
+        
+        <category>automate</category>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>build</category>
+        
+      </item>
+    
+      <item>
+        <title>Hosting a static website using google cloud storage</title>
+        <description>&lt;p&gt;
 Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google domains.
 &lt;/p&gt;
 &lt;Strong&gt;These things you need to do before start&lt;/Strong&gt;
@@ -278,17 +368,43 @@ Click Save.
 
 &lt;h5&gt;Testing&lt;/h5&gt;
 &lt;p&gt;Verify that content is served from the bucket by requesting the domain name in a browser.&lt;br&gt;
-For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.&lt;/p&gt;</content><author><name>Mrkulli</name></author><category term="gcp" /><category term="cloud" /><category term="static" /><category term="website" /><summary type="html">Describes how to configure a Cloud Storage bucket to host a static website for a domain you own. This site hosted on GCP storage bucket served using google domains. These things you need to do before start Select exiting project or create a new GCP project Verify that you own or manage the domain that you will be using. Make sure you are verifying the top-level domain, such as example.com, and not a subdomain, such as www.example.com</summary></entry><entry><title type="html">Create static site using Jekyll</title><link href="http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html" rel="alternate" type="text/html" title="Create static site using Jekyll" /><published>2019-05-23T00:00:00-05:00</published><updated>2019-05-23T00:00:00-05:00</updated><id>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html">&lt;p&gt;Jekyll is a Ruby Gem and a simple, blog-aware, static site generator that can be installed on most systems. 
+For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.&lt;/p&gt;</description>
+        <pubDate>Sun, 02 Jun 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</link>
+        <guid isPermaLink="true">http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</guid>
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>static</category>
+        
+        <category>website</category>
+        
+        
+        <category>gcp</category>
+        
+        <category>cloud</category>
+        
+        <category>static</category>
+        
+        <category>website</category>
+        
+      </item>
+    
+      <item>
+        <title>Create static site using Jekyll</title>
+        <description>&lt;p&gt;Jekyll is a Ruby Gem and a simple, blog-aware, static site generator that can be installed on most systems. 
 &lt;/p&gt;
 &lt;h5&gt;how to generate site using Jekyll&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;Install a full Ruby development environment https://jekyllrb.com/docs/installation/&lt;/li&gt;
 &lt;li&gt;Install Jekyll and bundler gems&lt;/li&gt;
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gem install jekyll bundler&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;li&gt;Create a new Jekyll site&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;jekyll new someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/jekyll-create-new.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-create-new.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 
 &lt;li&gt;Change into your new directory&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;someblog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -296,10 +412,32 @@ For example, if you have an object named index.html stored in a bucket named www
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;li&gt;Run server and make it available at localserver&lt;/li&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/jekyll-server.png&quot; alt=&quot;select-source&quot;&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-server.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 &lt;p&gt;go to http://localhost:4000 url and access your site&lt;/p&gt;
-&lt;img class=&quot;img-fluid&quot; src=&quot;/img/posts/jekyll-sample-site.png&quot; alt=&quot;select-source&quot;&gt;
-&lt;/ol&gt;</content><author><name>Mrkulli</name></author><category term="jekyll" /><category term="static" /><category term="site" /><summary type="html">Jekyll is a Ruby Gem and a simple, blog-aware, static site generator that can be installed on most systems. how to generate site using Jekyll Install a full Ruby development environment https://jekyllrb.com/docs/installation/ Install Jekyll and bundler gems gem install jekyll bundler Create a new Jekyll site jekyll new someblog</summary></entry><entry><title type="html">Pi-hole a network wide ad blocker setup</title><link href="http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html" rel="alternate" type="text/html" title="Pi-hole a network wide ad blocker setup" /><published>2019-05-22T00:00:00-05:00</published><updated>2019-05-22T00:00:00-05:00</updated><id>http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup</id><content type="html" xml:base="http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html">&lt;p&gt;Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.&lt;/p&gt;
+&lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/static/img/posts/jekyll-sample-site.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
+&lt;/ol&gt;</description>
+        <pubDate>Thu, 23 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</guid>
+        
+        <category>jekyll</category>
+        
+        <category>static</category>
+        
+        <category>site</category>
+        
+        
+        <category>jekyll</category>
+        
+        <category>static</category>
+        
+        <category>site</category>
+        
+      </item>
+    
+      <item>
+        <title>Pi-hole a network wide ad blocker setup</title>
+        <description>&lt;p&gt;Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.&lt;/p&gt;
 
 &lt;p&gt;Pi-hole is a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software. It is cool tool and very easy to install but most of the ISP routers does not allow you to override DNS configuration and it is hard to find documentation on how to setup pi-hole as DNS server or DHCP.&lt;/p&gt;
 
@@ -323,7 +461,30 @@ pi-hole comes with admin (management) tool, which shows stats on all the domains
 
 &lt;a href=&quot;https://discourse.pi-hole.net/t/how-do-i-add-additional-block-lists-to-pi-hole/259&quot;&gt;Here is the guide on how to add domains to blacklist
 &lt;/a&gt;
-&lt;p&gt;Enjoy setting up pi-hole for your home network.&lt;/p&gt;</content><author><name>Mrkulli</name></author><category term="pihole" /><category term="dnssinkhole" /><category term="adblocker" /><summary type="html">Internet is full of malware and advertisers to sell you stuff, hackers extracting your data and selling it. These article helps you escape these issues and enjoy safe online presence using the free and open source utility known as Pi-hole.</summary></entry><entry><title type="html">RxJava2 error handling</title><link href="http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html" rel="alternate" type="text/html" title="RxJava2 error handling" /><published>2019-05-20T00:00:00-05:00</published><updated>2019-05-20T00:00:00-05:00</updated><id>http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling</id><content type="html" xml:base="http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html">&lt;p&gt; One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error. &lt;/p&gt;
+&lt;p&gt;Enjoy setting up pi-hole for your home network.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</link>
+        <guid isPermaLink="true">http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</guid>
+        
+        <category>pihole</category>
+        
+        <category>dnssinkhole</category>
+        
+        <category>adblocker</category>
+        
+        
+        <category>pihole</category>
+        
+        <category>dnssinkhole</category>
+        
+        <category>adblocker</category>
+        
+      </item>
+    
+      <item>
+        <title>RxJava2 error handling</title>
+        <description>&lt;p&gt; One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error. &lt;/p&gt;
 
 &lt;p&gt;
 Such errors are routed to the RxJavaPlugins.onError handler. This handler can be overridden with the method RxJavaPlugins.setErrorHandler(Consumer&lt;Throwable&gt;). Without a specific handler, RxJava defaults to printing the Throwable's stacktrace to the console and calls the current thread's uncaught exception handler. &lt;/p&gt;
@@ -364,7 +525,30 @@ Such errors are routed to the RxJavaPlugins.onError handler. This handler can be
     &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testObservable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SECONDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failure occurred with observable :  &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Mrkulli</name></author><category term="RxJava" /><category term="Examples" /><category term="Reactive" /><summary type="html">One important design requirement for RxJava2 is that no Throwable errors should be swallowed, means errors that can not be emitted because the downstream's lifecycle already reached its terminal state or the downstream cancelled a sequence which was about to emit an error.</summary></entry><entry><title type="html">RxJava completable and single</title><link href="http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html" rel="alternate" type="text/html" title="RxJava completable and single" /><published>2019-05-15T00:00:00-05:00</published><updated>2019-05-15T00:00:00-05:00</updated><id>http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single</id><content type="html" xml:base="http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html">&lt;p&gt;
+&lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 20 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Examples</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Examples</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+      <item>
+        <title>RxJava completable and single</title>
+        <description>&lt;p&gt;
 Completable and Single are new types introduced exclusively at RxJava that represent reduced types of Observable. 
 &lt;/p&gt;
 &lt;p&gt;The  Completable represents a deferred computation &lt;em&gt;without &lt;/em&gt; any value but only indication of completion or exception.&lt;/p&gt;
@@ -401,7 +585,34 @@ Completable and Single are new types introduced exclusively at RxJava that repre
             &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnTerminate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Single completed either with success or error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Mrkulli</name></author><category term="RxJava" /><category term="Completable" /><category term="Single" /><category term="Reactive" /><summary type="html">Completable and Single are new types introduced exclusively at RxJava that represent reduced types of Observable. The Completable represents a deferred computation without any value but only indication of completion or exception.</summary></entry><entry><title type="html">Reactive programming with RxJava</title><link href="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html" rel="alternate" type="text/html" title="Reactive programming with RxJava" /><published>2019-05-11T00:00:00-05:00</published><updated>2019-05-11T00:00:00-05:00</updated><id>http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava</id><content type="html" xml:base="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html">&lt;p&gt;Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.&lt;/p&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Wed, 15 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Completable</category>
+        
+        <category>Single</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Completable</category>
+        
+        <category>Single</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+      <item>
+        <title>Reactive programming with RxJava</title>
+        <description>&lt;p&gt;Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.&lt;/p&gt;
 
 &lt;p&gt;
 RxJava is a Reactive Programming library for composing asynchronous and event-based programs by using observable sequences, coupled with some other features like functional programming, and easy concurrency makes RxJava a useful library. 
@@ -466,4 +677,26 @@ Flowable implements the Reactive-Streams Pattern and offers factory methods, int
 
 &lt;em&gt;
 &lt;p&gt;Backpressure is when in an Flowable processing pipeline, some asynchronous stages can't process the values fast enough and need a way to tell the upstream producer to slow down. Flowable takes backpressure into consideration, Observable does not.&lt;/p&gt;
-&lt;p&gt;The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.&lt;/p&gt; &lt;/em&gt;</content><author><name>Mrkulli</name></author><category term="RxJava" /><category term="Java" /><category term="Reactive" /><summary type="html">Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.</summary></entry></feed>
+&lt;p&gt;The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.&lt;/p&gt; &lt;/em&gt;
+</description>
+        <pubDate>Sat, 11 May 2019 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</link>
+        <guid isPermaLink="true">http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</guid>
+        
+        <category>RxJava</category>
+        
+        <category>Java</category>
+        
+        <category>Reactive</category>
+        
+        
+        <category>RxJava</category>
+        
+        <category>Java</category>
+        
+        <category>Reactive</category>
+        
+      </item>
+    
+  </channel>
+</rss>

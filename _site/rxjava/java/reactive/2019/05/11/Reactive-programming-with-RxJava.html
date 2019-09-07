@@ -1,93 +1,148 @@
 <!DOCTYPE html>
-
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <title>Reactive programming with RxJava - Posts</title>
+    <meta name="author" content="MrKulli" />
+    <meta name="description" content="Reactive programming with RxJava" />
+    <meta name="keywords" content="Reactive programming with RxJava, Posts, RxJava, Java, Reactive" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <meta content="1749788565247320" property="fb:app_id">
+    <meta content="Posts" property="og:site_name">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>
-    Reactive programming with RxJava - Mrkulli
     
-  </title>
 
-  <meta name="description" content="Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where da...">
+    
+      <meta content="Reactive programming with RxJava" property="og:title">
+      <meta content="article" property="og:type">
+    
 
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+      <meta content="My Personal posts" property="og:description">
+    
 
-  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    
+      <meta content="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html" property="og:url">
+    
 
-  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+    
+      <meta content="2019-05-11T00:00:00-05:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
+    
 
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html">
-  <link rel="alternate" type="application/rss+xml" title="Mrkulli" href="/feed.xml">
+    
 
-</head>
+    
+      
+        <meta content="RxJava" property="article:section">
+      
+    
 
+    
+      
+        <meta content="RxJava" property="article:tag">
+      
+        <meta content="Java" property="article:tag">
+      
+        <meta content="Reactive" property="article:tag">
+      
+    
 
-<body>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@github.io">
+    <meta name="twitter:creator" content="@github.io">
 
-  <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="/">Mrkulli</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/posts">Posts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    
+      <meta name="twitter:title" content="Reactive programming with RxJava">
+    
 
+    
+      <meta name="twitter:url" content="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html">
+    
 
-  <!-- Page Header -->
+    
+      <meta name="twitter:description" content="My Personal posts">
+    
 
-<header class="masthead" style="background-image: url('/img/posts/rxjava.jpeg')">
-  
-    <div class="overlay"></div>
+    
+
+    <!-- Font awesome icons -->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/static/css/syntax.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/super-search.css">
+    <link rel="stylesheet" href="/static/css/thickbox.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    
+  </head>
+  <body>
     <div class="container">
-      <div class="row">
-        <!-- <div class="col-lg-8 col-md-10 mx-auto"> -->
-          <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1>Reactive programming with RxJava</h1>
-            
-            <span class="meta">Posted by
-              <a href="#">Mrkulli</a>
-              on May 11, 2019 &middot; <span class="reading-time" title="Estimated read time">
-  
-   4 mins  read </span>
-
-            </span>
+      <div class="col-sm-3">
+        <div class="fixed-condition">
+          <h1 class="author-name"><a href="/">MrKulli</a></h1>
+          
+            <div class="profile-about">
+              I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django.
+            </div>
+          
+          <div class="social">
+            <ul>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              
+                <li><a href="https://stackoverflow.com/users/3195676/whocares?tab=profile" target="_blank"><i class="fa fa-stack-exchange"></i></a></li>
+              
+                <li><a href="https://github.com/kranthik2" target="_blank"><i class="fa fa-github"></i></a></li>
+              
+            </ul>
           </div>
+          <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">Home</a></li>
+            
+              <li><a class="about" href="/about/">About Me</a></li>
+            
+              <li><a class="about" href="/projects/">My Projects</a></li>
+            
+              <li><a class="about" href="/feed.xml">XML Feed</a></li>
+            
+          </ul>
         </div>
+        <!-- end /.fixed-condition -->
       </div>
-    </div>
-  </header>
+      <div class="col-sm-8 col-offset-1 main-layout">
+        <header class="post-header">
+  <h1 class="post-title">Reactive programming with RxJava</h1>
+</header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
+<span class="time">11 May 2019</span>
 
-        <p>Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.</p>
+  <span class="categories">
+    &raquo; <a href="/category/RxJava">RxJava</a>, <a href="/category/Java">Java</a>, <a href="/category/Reactive">Reactive</a>
+  </span>
+
+
+<div class="content">
+  <div class="post"><p>Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.</p>
 
 <p>
 RxJava is a Reactive Programming library for composing asynchronous and event-based programs by using observable sequences, coupled with some other features like functional programming, and easy concurrency makes RxJava a useful library. 
@@ -153,29 +208,485 @@ Flowable implements the Reactive-Streams Pattern and offers factory methods, int
 <em>
 <p>Backpressure is when in an Flowable processing pipeline, some asynchronous stages can't process the values fast enough and need a way to tell the upstream producer to slow down. Flowable takes backpressure into consideration, Observable does not.</p>
 <p>The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.</p> </em>
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="github.io">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1749788565247320";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
 
 
-        <hr>
-
-        <div class="clearfix">
-
+  
+    
+      
+        
           
-          <a class="btn btn-primary float-left" href="/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html" data-toggle="tooltip" data-placement="top" title="Linux network latency simulation">&larr; Previous<span class="d-none d-md-inline">
-              Post</span></a>
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+            <div class="panel-body">
+              <h4>Related Posts</h4>
+              <ul>
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html">RxJava2 error handling</a>
+                  
+                    (Categories: <a href="/category/RxJava">RxJava</a>, <a href="/category/Examples">Examples</a>, <a href="/category/Reactive">Reactive</a>)
+                  
+                </li>
           
           
-          <a class="btn btn-primary float-right" href="/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html" data-toggle="tooltip" data-placement="top" title="RxJava completable and single">Next<span class="d-none d-md-inline">
-              Post</span> &rarr;</a>
+        
+      
           
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html">RxJava completable and single</a>
+                  
+                    (Categories: <a href="/category/RxJava">RxJava</a>, <a href="/category/Completable">Completable</a>, <a href="/category/Single">Single</a>, <a href="/category/Reactive">Reactive</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+          
+      
+    
+  
+  
+  </ul>
+</div>
 
-        </div>
 
-      </div>
-    </div>
-  </div>
-  <div id="disqus_thread"></div>
+<div class="PageNavigation">
+  
+    <a class="prev" href="/linux/network/latency/2019/04/28/Linux-network-latency-simulation.html">&laquo; Linux network latency simulation</a>
+  
+  
+    <a class="next" href="/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html">RxJava completable and single &raquo;</a>
+  
+</div>
+
+
+<div id="disqus_thread"></div>
 <script>
-
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
@@ -194,76 +705,29 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-
-  <!-- Footer -->
-
-<hr>
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
+        <footer>
+          &copy; MrKulli
           
-          <li class="list-inline-item">
-            <a href="mailto:kullik2@gmail.com">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
+            - <a href="https://github.com/kranthik2/mrkulli">https://github.com/kranthik2/mrkulli</a> - Powered by Jekyll.
           
-          
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/kranthik2">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        <p class="copyright text-muted">Copyright &copy; Mrkulli 2019</p>
+          <div class="btn-github" style="float:right;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=kranthik2&repo=mrkulli&type=star&count=true" frameborder="0" scrolling="0" width="100" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=kranthik2&repo=mrkulli&type=fork&count=true" frameborder="0" scrolling="0" width="100" height="20px"></iframe>
+          </div>
+        </footer>
       </div>
+      <!-- end /.col-sm-8 -->
     </div>
-  </div>
-</footer>
+    <!-- end /.container -->
 
-
-  <script src="/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/vendor/mrkulli-blog/js/clean-blog.min.js"></script>
-
-<script src="/assets/scripts.js"></script>
-<script async src="//pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-google_ad_client: "ca-pub-3067106561982864",
-enable_page_level_ads: true
-});
-</script>
-
-
-
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141222368-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-141222368-1');
-</script>
-
-
-
-</body>
-
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/super-search.js"></script>
+    <script src="/static/js/thickbox-compressed.js"></script>
+    <script src="/static/js/projects.js"></script>
+  </body>
 </html>
+
