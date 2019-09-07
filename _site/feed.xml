@@ -3,11 +3,52 @@
   <channel>
     <title>Posts</title>
     <description>My Personal posts</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Sep 2019 21:59:44 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Sep 2019 21:59:44 -0500</lastBuildDate>
+    <link>www.mrkulli.com/</link>
+    <atom:link href="www.mrkulli.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 07 Sep 2019 17:38:40 -0500</pubDate>
+    <lastBuildDate>Sat, 07 Sep 2019 17:38:40 -0500</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>RxJava2 NullPointerException handling</title>
+        <description>&lt;p&gt;Current Reactive streams specification does not accept null as a stream element since RxJava2 built on top of it which will produce NullPointerException for the null return value.&lt;/p&gt;
+
+&lt;p&gt;Sample null return example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fromCallable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-log&quot; data-lang=&quot;log&quot;&gt;Caused by: java.lang.NullPointerException: Callable returned null&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;RxJava2 not allowing null as stream value created chaos in Java (JVM) community and people are fighting over why it is not allowed. See &lt;a href=&quot;https://github.com/ReactiveX/RxJava/issues/4644&quot;&gt; https://github.com/ReactiveX/RxJava/issues/4644 &lt;/a&gt;, as always rules get changed by need and time until reactive stream specifications get amended, we need to use workarounds to handle NullPointerException from RxJava2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How to handle NullPointerException&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are multiple ways to handle null return like using Optional, wrapping return value in an Observable&amp;lt;Optional&lt;T&gt;&amp;gt; is an unnecessary complication and you end up cluttering your application or API by Observable&amp;lt;Optional&lt;SomeObject&gt;&amp;gt; where we could just use Observable&lt;SomeObject&gt;. Below solution uses ***onErrorResumeNext*** to handle null returns than using Optional. onErrorResumeNext instructs a reactive type to emit a sequence of items if it encounters an error.&lt;/SomeObject&gt;&lt;/SomeObject&gt;&lt;/T&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;        &lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fromCallable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doOnError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onErrorResumeNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;throwable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;throwable&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NullPointerException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;just&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;returning data not found&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//returns exceptions&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;just&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;throwable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-log&quot; data-lang=&quot;log&quot;&gt;java.lang.NullPointerException: Callable returned null
+returning data not found&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Tue, 20 Aug 2019 00:00:00 -0500</pubDate>
+        <link>www.mrkulli.com/rxjava/2019/08/20/RxJava2-Null-value-handling.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/rxjava/2019/08/20/RxJava2-Null-value-handling.html</guid>
+        
+        
+        <category>RxJava</category>
+        
+      </item>
     
       <item>
         <title>Python mock example</title>
@@ -61,8 +102,8 @@ It allows you to replace parts of your system under test with mock objects and m
     &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assertEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Tue, 02 Jul 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/python/2019/07/02/Python-Mock-example.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/2019/07/02/Python-Mock-example.html</guid>
+        <link>www.mrkulli.com/python/2019/07/02/Python-Mock-example.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/python/2019/07/02/Python-Mock-example.html</guid>
         
         <category>python</category>
         
@@ -149,8 +190,8 @@ Docker container &lt;span class=&quot;s1&quot;&gt;'ktdemo'&lt;/span&gt; is RUNNI
 
 &lt;p&gt;The full source code of example is over on GitHub &lt;a href=&quot;https://github.com/kranthik2/ktdemo.git&quot;&gt;https://github.com/kranthik2/ktdemo.git&lt;/a&gt;.&lt;/p&gt;</description>
         <pubDate>Mon, 01 Jul 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</link>
-        <guid isPermaLink="true">http://localhost:4000/gradle/docker/2019/07/01/Gradle-docker-plugin.html</guid>
+        <link>www.mrkulli.com/gradle/docker/2019/07/01/Gradle-docker-plugin.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/gradle/docker/2019/07/01/Gradle-docker-plugin.html</guid>
         
         <category>gradle</category>
         
@@ -219,8 +260,8 @@ or using curl
 curl -X POST http://localhost:8080/hello-word/post/test&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;/p&gt;</description>
         <pubDate>Thu, 27 Jun 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</link>
-        <guid isPermaLink="true">http://localhost:4000/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</guid>
+        <link>www.mrkulli.com/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/kotlin/spring/2019/06/27/Creating-a-RESTful-webservice-with-Kotlin.html</guid>
         
         <category>kotlin</category>
         
@@ -269,8 +310,8 @@ directory is where the generated site will be placed (by default) once Jekyll is
 Once you push the cloudbuild.yaml file to your repository and create the Build Trigger, you can kick off the first build manually. Head over to the GCP Console Build Triggers section, click &lt;strong&gt;“Run Trigger”&lt;/strong&gt; &lt;/p&gt;
 &lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/cloud-triggered.png&quot; alt=&quot;cloud-build-triggered&quot;&gt;</description>
         <pubDate>Sat, 08 Jun 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</link>
-        <guid isPermaLink="true">http://localhost:4000/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</guid>
+        <link>www.mrkulli.com/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/automate/gcp/cloud/build/2019/06/08/Automating-static-website-using-google-cloud-build.html</guid>
         
         <category>automate</category>
         
@@ -370,8 +411,8 @@ Click Save.
 &lt;p&gt;Verify that content is served from the bucket by requesting the domain name in a browser.&lt;br&gt;
 For example, if you have an object named index.html stored in a bucket named www.domain.com, check that it's accessible by going to www.domain.com/index.html in your browser.&lt;/p&gt;</description>
         <pubDate>Sun, 02 Jun 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</link>
-        <guid isPermaLink="true">http://localhost:4000/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</guid>
+        <link>www.mrkulli.com/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/gcp/cloud/static/website/2019/06/02/Hosting-a-static-website-hosting-using-google-cloud-storage.html</guid>
         
         <category>gcp</category>
         
@@ -417,8 +458,8 @@ For example, if you have an object named index.html stored in a bucket named www
 &lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/jekyll-sample-site.png&quot; property=&quot;og:image&quot; alt=&quot;select-source&quot;&gt;
 &lt;/ol&gt;</description>
         <pubDate>Thu, 23 May 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</guid>
+        <link>www.mrkulli.com/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/jekyll/static/site/2019/05/23/Create-static-site-using-jekyll.html</guid>
         
         <category>jekyll</category>
         
@@ -464,8 +505,8 @@ pi-hole comes with admin (management) tool, which shows stats on all the domains
 &lt;p&gt;Enjoy setting up pi-hole for your home network.&lt;/p&gt;
 </description>
         <pubDate>Wed, 22 May 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</link>
-        <guid isPermaLink="true">http://localhost:4000/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</guid>
+        <link>www.mrkulli.com/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/pihole/dnssinkhole/adblocker/2019/05/22/Pi-hole-a-network-wide-ad-blocker-setup.html</guid>
         
         <category>pihole</category>
         
@@ -528,14 +569,8 @@ Such errors are routed to the RxJavaPlugins.onError handler. This handler can be
 &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Mon, 20 May 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</link>
-        <guid isPermaLink="true">http://localhost:4000/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</guid>
-        
-        <category>RxJava</category>
-        
-        <category>Examples</category>
-        
-        <category>Reactive</category>
+        <link>www.mrkulli.com/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/rxjava/examples/reactive/2019/05/20/RxJava-error-handling.html</guid>
         
         
         <category>RxJava</category>
@@ -588,8 +623,8 @@ Completable and Single are new types introduced exclusively at RxJava that repre
         &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Wed, 15 May 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</link>
-        <guid isPermaLink="true">http://localhost:4000/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</guid>
+        <link>www.mrkulli.com/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</link>
+        <guid isPermaLink="true">www.mrkulli.com/rxjava/completable/single/reactive/2019/05/15/RxJava-Completable-and-Single.html</guid>
         
         <category>RxJava</category>
         
@@ -605,94 +640,6 @@ Completable and Single are new types introduced exclusively at RxJava that repre
         <category>Completable</category>
         
         <category>Single</category>
-        
-        <category>Reactive</category>
-        
-      </item>
-    
-      <item>
-        <title>Reactive programming with RxJava</title>
-        <description>&lt;p&gt;Reactive programming is a general programming term that is focused on reacting to changes, such as data values or events. It is an event-based model where data is pushed to the consumer, as it becomes available.&lt;/p&gt;
-
-&lt;p&gt;
-RxJava is a Reactive Programming library for composing asynchronous and event-based programs by using observable sequences, coupled with some other features like functional programming, and easy concurrency makes RxJava a useful library. 
-RxJava is an alternative to the more limited ways of doing asynchronous code in the JDK, in order to be more efficient with resources and increase an application's capacity to serve large number of clients, without the headache of writing low-level concurrent or and parallelized code
-&lt;/p&gt;
-
-&lt;h4 &gt; Observable &lt;/h4&gt;
-
-&lt;p&gt;
-An observer subscribes to an Observable then that observer reacts to whatever item or sequence of items the Observable emits. This pattern facilitates concurrent operations because it does not need to block while waiting for the Observable to emit objects, but instead it creates a sentry in the form of an observer that stands ready to react appropriately at whatever future time the Observable does so.&lt;/p&gt;
-
-&lt;img class=&quot;img-fluid&quot; src=&quot;https://raw.githubusercontent.com/kranthik2/mrkulli/master/static/img/_posts/rxjava-observable.png&quot; alt=&quot;select-source&quot;&gt;
-  
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Observable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;
-
-Observable is intended for push (reactive) but can also be used for pull (interactive). It is lazy rather than eager. It can be used asynchronously or synchronously. It can represent 0, 1, many, or infinite values or events over time.
-
-&lt;/p&gt;
-&lt;p&gt;
-You can introduce multithreading into observable operators by instructing operators to operate on particular Schedulers.
-&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;currentThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;observableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Observable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribeOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Schedulers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-output :
-  RxNewThreadScheduler-1
-  Observable test
-&lt;/blockquote&gt;
-
-&lt;h5 &gt; Different Types of Scedhulers &lt;/h5&gt;
-&lt;ul&gt;
-      &lt;li&gt;Schedulers.io() : Returns a default, shared Scheduler instance intended for IO-bound work.&lt;/li&gt;
-      &lt;li&gt;Schedulers.computation() : Returns a default, shared Scheduler instance intended for computational work.&lt;/li&gt;
-      &lt;li&gt;Schedulers.single() : Returns a default, shared, single-thread-backed Scheduler instance for work requiring strongly-sequential execution on the same background thread.&lt;/li&gt;
-      &lt;li&gt;Schedulers.newThread() : Returns a default, shared Scheduler instance that creates a new Thread for each unit of work.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h4 &gt; Flowable &lt;/h4&gt;
-
-&lt;p&gt;
-Flowable implements the Reactive-Streams Pattern and offers factory methods, intermediate operators and the ability to consume reactive dataflows and operates with Publishers.
-&lt;/p&gt;
-
-&lt;h5&gt; Sample Flowable emitter : &lt;/h5&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;Flowable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flowableEmitter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;flowableEmitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Flowable test&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BackpressureStrategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BUFFER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-
-&lt;em&gt;
-&lt;p&gt;Backpressure is when in an Flowable processing pipeline, some asynchronous stages can't process the values fast enough and need a way to tell the upstream producer to slow down. Flowable takes backpressure into consideration, Observable does not.&lt;/p&gt;
-&lt;p&gt;The Flowable hosts the default buffer size of 128 elements for operators, accessible via bufferSize(), that can be overridden globally via the system parameter rx2.buffer-size. Most operators, however, have overloads that allow setting their internal buffer size explicitly.&lt;/p&gt; &lt;/em&gt;
-</description>
-        <pubDate>Sat, 11 May 2019 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</link>
-        <guid isPermaLink="true">http://localhost:4000/rxjava/java/reactive/2019/05/11/Reactive-programming-with-RxJava.html</guid>
-        
-        <category>RxJava</category>
-        
-        <category>Java</category>
-        
-        <category>Reactive</category>
-        
-        
-        <category>RxJava</category>
-        
-        <category>Java</category>
         
         <category>Reactive</category>
         
